@@ -521,6 +521,10 @@
                 font-size: 24px;
             }
 
+            .course-progress {
+                display: none !important;
+            }
+
             .slide-container {
                 padding: 30px 20px;
                 min-height: 400px;
@@ -540,12 +544,19 @@
             }
 
             button {
-                padding: 10px 20px;
-                font-size: 14px;
+                padding: 8px 12px !important;
+                font-size: 13px !important;
             }
 
             .slide-nav {
-                padding: 15px 20px;
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+                padding: 12px 15px !important;
+            }
+
+            .slide-counter {
+                font-size: 12px !important;
+                white-space: nowrap !important;
             }
         }
     </style>
@@ -609,7 +620,7 @@
                         convertedHtml: `
                             <div class="slide-content">
                                 <div style="text-align: center; margin-bottom: 2rem;">
-                                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=400&fit=crop" alt="Cuidados de salud" style="width: 100%; max-width: 800px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=400&fit=crop" alt="Cuidados de salud" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                                 </div>
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Bienvenida al Curso</h2>
                                 <p style="font-size: 1.1rem; line-height: 1.8; color: #4a5568;">Los cuidados paliativos son un enfoque de atención médica que busca mejorar la calidad de vida de los pacientes y sus familias cuando enfrentan enfermedades graves. Este curso te proporcionará los conocimientos fundamentales para comprender y aplicar los principios de los cuidados paliativos en tu práctica profesional.</p>
@@ -633,13 +644,9 @@
                         convertedHtml: `
                             <div class="slide-content">
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">¿Qué son los Cuidados Paliativos?</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-                                    <div>
-                                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=300&fit=crop" alt="Atención médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                    </div>
-                                    <div>
-                                        <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568;">Los cuidados paliativos son una atención médica especializada que se centra en proporcionar alivio del dolor y otros síntomas de una enfermedad grave. El objetivo es mejorar la calidad de vida tanto del paciente como de la familia.</p>
-                                    </div>
+                                <div style="margin-bottom: 2rem;">
+                                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=400&fit=crop" alt="Atención médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568;">Los cuidados paliativos son una atención médica especializada que se centra en proporcionar alivio del dolor y otros síntomas de una enfermedad grave. El objetivo es mejorar la calidad de vida tanto del paciente como de la familia.</p>
                                 </div>
                                 <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
                                     <h4 style="color: #d4a373; margin-bottom: 1rem;">Principios Fundamentales:</h4>
@@ -699,21 +706,15 @@
                         convertedHtml: `
                             <div class="slide-content">
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Manejo Efectivo del Dolor</h2>
-                                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-                                    <div>
-                                        <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">El control del dolor es fundamental en los cuidados paliativos. Un manejo adecuado mejora significativamente la calidad de vida del paciente.</p>
-                                        <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #a8d5e2;">
-                                            <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Escalera Analgésica de la OMS:</h4>
-                                            <ul style="color: #718096; line-height: 2;">
-                                                <li><strong>Escalón 1:</strong> Dolor leve - Analgésicos no opioides</li>
-                                                <li><strong>Escalón 2:</strong> Dolor moderado - Opioides débiles</li>
-                                                <li><strong>Escalón 3:</strong> Dolor severo - Opioides potentes</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=300&h=400&fit=crop" alt="Medicamentos" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                    </div>
+                                <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">El control del dolor es fundamental en los cuidados paliativos. Un manejo adecuado mejora significativamente la calidad de vida del paciente.</p>
+                                <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&h=400&fit=crop" alt="Medicamentos" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                                <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #a8d5e2; margin-bottom: 2rem;">
+                                    <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Escalera Analgésica de la OMS:</h4>
+                                    <ul style="color: #718096; line-height: 2;">
+                                        <li><strong>Escalón 1:</strong> Dolor leve - Analgésicos no opioides</li>
+                                        <li><strong>Escalón 2:</strong> Dolor moderado - Opioides débiles</li>
+                                        <li><strong>Escalón 3:</strong> Dolor severo - Opioides potentes</li>
+                                    </ul>
                                 </div>
                             </div>
                         `
@@ -727,11 +728,11 @@
                             question: "¿Cuál es el objetivo principal de los cuidados paliativos?",
                             options: [
                                 "Curar la enfermedad del paciente",
-                                "Mejorar la calidad de vida del paciente y su familia",
                                 "Prolongar la vida a cualquier costo",
+                                "Mejorar la calidad de vida del paciente y su familia",
                                 "Sustituir todos los tratamientos médicos"
                             ],
-                            correctAnswer: 1,
+                            correctAnswer: 2,
                             explanation: "El objetivo principal de los cuidados paliativos es mejorar la calidad de vida tanto del paciente como de su familia, proporcionando alivio del dolor y otros síntomas, sin enfocarse únicamente en curar la enfermedad o prolongar la vida.",
                             feedbackCorrect: "¡Excelente! Comprendes claramente el enfoque de los cuidados paliativos.",
                             feedbackIncorrect: "Recuerda que los cuidados paliativos se centran en la calidad de vida, no solo en curar o prolongar la vida."
@@ -784,7 +785,7 @@
                             <div class="slide-content">
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Habilidades de Comunicación Efectiva</h2>
                                 <div style="margin-bottom: 2rem;">
-                                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=300&fit=crop" alt="Comunicación médico-paciente" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=400&fit=crop" alt="Comunicación médico-paciente" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 </div>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">La comunicación efectiva es esencial en los cuidados paliativos. Permite establecer confianza, comprender las necesidades del paciente y tomar decisiones compartidas.</p>
                                 <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
@@ -808,13 +809,9 @@
                         convertedHtml: `
                             <div class="slide-content">
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Cuidado Integral de la Familia</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-                                    <div>
-                                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=300&fit=crop" alt="Familia unida" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                    </div>
-                                    <div>
-                                        <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568;">La familia es parte integral del cuidado paliativo. Los miembros familiares a menudo asumen roles de cuidadores y necesitan apoyo emocional, educación y recursos.</p>
-                                    </div>
+                                <div style="margin-bottom: 2rem;">
+                                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=400&fit=crop" alt="Familia unida" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568;">La familia es parte integral del cuidado paliativo. Los miembros familiares a menudo asumen roles de cuidadores y necesitan apoyo emocional, educación y recursos.</p>
                                 </div>
                                 <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px;">
                                     <h4 style="color: #d4a373; margin-bottom: 1rem;">Áreas de Apoyo Familiar:</h4>
@@ -848,21 +845,21 @@
                         content: {
                             question: "Arrastra cada intervención a la categoría de síntoma correspondiente",
                             items: [
-                                { id: "item-1", text: "Administrar morfina", category: "dolor" },
+                                { id: "item-1", text: "Analgésicos potentes (morfina)", category: "dolor" },
                                 { id: "item-2", text: "Oxígeno suplementario", category: "disnea" },
-                                { id: "item-3", text: "Ondansetrón", category: "nauseas" },
-                                { id: "item-4", text: "Escala EVA", category: "dolor" },
-                                { id: "item-5", text: "Posición semi-Fowler", category: "disnea" },
-                                { id: "item-6", text: "Dieta fraccionada", category: "nauseas" },
-                                { id: "item-7", text: "TENS", category: "dolor" },
-                                { id: "item-8", text: "Técnicas de relajación", category: "disnea" }
+                                { id: "item-3", text: "Medicamentos antináuseas", category: "nauseas" },
+                                { id: "item-4", text: "Preguntar nivel de dolor del 1 al 10", category: "dolor" },
+                                { id: "item-5", text: "Elevar cabecera de la cama", category: "disnea" },
+                                { id: "item-6", text: "Comidas pequeñas y frecuentes", category: "nauseas" },
+                                { id: "item-7", text: "Estimulación eléctrica suave", category: "dolor" },
+                                { id: "item-8", text: "Ejercicios de respiración", category: "disnea" }
                             ],
                             categories: [
                                 { id: "dolor", label: "Control del Dolor" },
                                 { id: "disnea", label: "Manejo de Disnea" },
                                 { id: "nauseas", label: "Náuseas y Vómitos" }
                             ],
-                            explanation: "Dolor: morfina, escala EVA, TENS. Disnea: oxígeno, posición semi-Fowler, técnicas de relajación. Náuseas: ondansetrón, dieta fraccionada.",
+                            explanation: "Control del Dolor: analgésicos potentes, evaluación numérica del dolor, estimulación eléctrica. Manejo de Disnea: oxígeno, posición elevada, ejercicios de respiración. Náuseas y Vómitos: medicamentos antináuseas, comidas pequeñas.",
                             feedbackCorrect: "¡Excelente! Has categorizado correctamente todas las intervenciones según el síntoma que atienden.",
                             feedbackIncorrect: "Algunas intervenciones no están en la categoría correcta. Revisa qué síntoma trata cada una."
                         }
@@ -917,7 +914,7 @@
                             <div class="slide-content">
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Dilemas Éticos y Toma de Decisiones</h2>
                                 <div style="margin-bottom: 2rem;">
-                                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=300&fit=crop" alt="Ética médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop" alt="Ética médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 </div>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">Los cuidados paliativos involucran importantes consideraciones éticas que guían la toma de decisiones centrada en el paciente.</p>
                                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
@@ -977,23 +974,17 @@
                         convertedHtml: `
                             <div class="slide-content">
                                 <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Maximizando el Bienestar del Paciente</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-                                    <div>
-                                        <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">La calidad de vida es un concepto multidimensional que incluye aspectos físicos, psicológicos, sociales y espirituales del bienestar del paciente.</p>
-                                        <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px;">
-                                            <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Dimensiones de Calidad de Vida:</h4>
-                                            <ul style="color: #718096; line-height: 2; font-size: 0.95rem;">
-                                                <li>✨ Bienestar físico y control de síntomas</li>
-                                                <li>💭 Bienestar psicológico y emocional</li>
-                                                <li>👥 Relaciones sociales y familiares</li>
-                                                <li>🙏 Bienestar espiritual y existencial</li>
-                                                <li>🎯 Autonomía y autodeterminación</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=500&fit=crop" alt="Calidad de vida" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                    </div>
+                                <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">La calidad de vida es un concepto multidimensional que incluye aspectos físicos, psicológicos, sociales y espirituales del bienestar del paciente.</p>
+                                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&h=400&fit=crop" alt="Calidad de vida" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                                <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                                    <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Dimensiones de Calidad de Vida:</h4>
+                                    <ul style="color: #718096; line-height: 2; font-size: 0.95rem;">
+                                        <li>✨ Bienestar físico y control de síntomas</li>
+                                        <li>💭 Bienestar psicológico y emocional</li>
+                                        <li>👥 Relaciones sociales y familiares</li>
+                                        <li>🙏 Bienestar espiritual y existencial</li>
+                                        <li>🎯 Autonomía y autodeterminación</li>
+                                    </ul>
                                 </div>
                             </div>
                         `
@@ -1104,6 +1095,8 @@
             if (window.CourseApp && typeof window.CourseApp.nextSlide === 'function') {
                 window.CourseApp.nextSlide();
             }
+            // Scroll animado al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             setTimeout(() => {
                 updateCustomNav();
                 checkAndLockNextButton();
@@ -1118,6 +1111,8 @@
             if (window.CourseApp && typeof window.CourseApp.previousSlide === 'function') {
                 window.CourseApp.previousSlide();
             }
+            // Scroll animado al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             setTimeout(() => {
                 updateCustomNav();
                 checkAndLockNextButton();
@@ -1250,6 +1245,8 @@
             if (window.CourseApp && typeof window.CourseApp.goToSlide === 'function') {
                 window.CourseApp.goToSlide(index);
             }
+            // Scroll animado al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             setTimeout(() => {
                 updateCustomNav();
                 checkAndLockNextButton();
