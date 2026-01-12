@@ -40,6 +40,10 @@
             --progress-dot-active: #1a202c;
             --progress-dot-completed: rgba(26, 32, 44, 0.65);
             
+            /* Visibilidad de progress dots (flex = visible, none = oculto) */
+            --progress-dots-display-desktop: flex;
+            --progress-dots-display-mobile: none;
+            
             /* Colores de botones */
             --btn-primary-bg: linear-gradient(135deg, #6ba3ba 0%, #5a8fa3 100%);
             --btn-primary-hover-shadow: rgba(107, 163, 186, 0.5);
@@ -47,7 +51,7 @@
             --btn-secondary-hover: #cbb592;
             --btn-finish-bg: linear-gradient(135deg, #8fb37d 0%, #7a9d6b 100%);
             
-            /* Colores de slides especiales */
+            /* Colores de titulos h2,h3 y h4 */
             --slide-title-color: #5a8fa3;
             
             /* Otros colores */
@@ -100,7 +104,7 @@
         }
 
         .course-progress {
-            display: flex;
+            display: var(--progress-dots-display-desktop);
             gap: 10px;
             margin-top: 12px;
             justify-content: center;
@@ -348,7 +352,7 @@
             font-size: 16px;
             line-height: 1.8;
             margin-bottom: 15px;
-            text-align: justify;
+            text-align: left;
         }
 
         .slide-nav {
@@ -516,13 +520,43 @@
             to { opacity: 1; }
         }
 
+        /* Estilos para reproductor de audio */
+        .audio-player {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .audio-player audio {
+            flex: 1;
+            height: 40px;
+            outline: none;
+        }
+
+        .audio-player audio::-webkit-media-controls-panel {
+            background: linear-gradient(135deg, #e8f3f8 0%, #f0f8fa 100%);
+            border-radius: 8px;
+        }
+
+        .audio-icon {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+
         @media (max-width: 768px) {
             .course-header h1 {
                 font-size: 24px;
             }
 
             .course-progress {
-                display: none !important;
+                display: var(--progress-dots-display-mobile) !important;
             }
 
             .slide-container {
@@ -616,16 +650,23 @@
                         id: "slide-0",
                         order: 0,
                         type: "page",
-                        title: "Introducción a los Cuidados Paliativos",
+                        title: "Introducción y Fundamentos de los Cuidados Paliativos",
                         convertedHtml: `
                             <div class="slide-content">
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_0.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
                                 <div style="text-align: center; margin-bottom: 2rem;">
                                     <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=400&fit=crop" alt="Cuidados de salud" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                                 </div>
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Bienvenida al Curso</h2>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Bienvenida al Curso</h2>
                                 <p style="font-size: 1.1rem; line-height: 1.8; color: #4a5568;">Los cuidados paliativos son un enfoque de atención médica que busca mejorar la calidad de vida de los pacientes y sus familias cuando enfrentan enfermedades graves. Este curso te proporcionará los conocimientos fundamentales para comprender y aplicar los principios de los cuidados paliativos en tu práctica profesional.</p>
-                                <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #a8d5e2; margin-top: 1.5rem;">
-                                    <h4 style="color: #7fb3c4; margin-bottom: 0.5rem;">Objetivos del Curso:</h4>
+                                <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #a8d5e2; margin-top: 1.5rem; margin-bottom: 2rem;">
+                                    <h4 style="color: var(--slide-title-color); margin-bottom: 0.5rem;">Objetivos del Curso:</h4>
                                     <ul style="color: #718096; line-height: 1.8;">
                                         <li>Comprender los principios básicos de los cuidados paliativos</li>
                                         <li>Identificar los síntomas comunes y su manejo</li>
@@ -633,23 +674,29 @@
                                         <li>Conocer el rol del equipo multidisciplinario</li>
                                     </ul>
                                 </div>
-                            </div>
-                        `
-                    },
-                    {
-                        id: "slide-1",
-                        order: 1,
-                        type: "page",
-                        title: "Definición y Principios Fundamentales",
-                        convertedHtml: `
-                            <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">¿Qué son los Cuidados Paliativos?</h2>
-                                <div style="margin-bottom: 2rem;">
-                                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=400&fit=crop" alt="Atención médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
-                                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568;">Los cuidados paliativos son una atención médica especializada que se centra en proporcionar alivio del dolor y otros síntomas de una enfermedad grave. El objetivo es mejorar la calidad de vida tanto del paciente como de la familia.</p>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem; margin-top: 2rem;">¿Qué son los Cuidados Paliativos?</h2>
+                                <div class="desktop-text-image-layout" style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin: 0;">Los cuidados paliativos son una atención médica especializada que se centra en proporcionar alivio del dolor y otros síntomas de una enfermedad grave. El objetivo es mejorar la calidad de vida tanto del paciente como de la familia.</p>
+                                    <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&h=400&fit=crop" alt="Atención médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 </div>
-                                <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h4 style="color: #d4a373; margin-bottom: 1rem;">Principios Fundamentales:</h4>
+                                <style>
+                                    @media (min-width: 769px) {
+                                        .desktop-text-image-layout {
+                                            flex-direction: row !important;
+                                            align-items: flex-start;
+                                            gap: 2rem !important;
+                                        }
+                                        .desktop-text-image-layout p {
+                                            flex: 1;
+                                        }
+                                        .desktop-text-image-layout img {
+                                            width: 400px !important;
+                                            flex-shrink: 0;
+                                        }
+                                    }
+                                </style>
+                                <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                                    <h4 style="color: var(--color-secondary); margin-bottom: 1rem;">Principios Fundamentales:</h4>
                                     <ol style="color: #718096; line-height: 2;">
                                         <li><strong>Alivio del dolor y síntomas:</strong> Control efectivo del sufrimiento físico</li>
                                         <li><strong>Apoyo psicológico y espiritual:</strong> Atención integral a necesidades emocionales</li>
@@ -657,19 +704,9 @@
                                         <li><strong>Enfoque en calidad de vida:</strong> Maximizar el bienestar del paciente</li>
                                     </ol>
                                 </div>
-                            </div>
-                        `
-                    },
-                    {
-                        id: "slide-2",
-                        order: 2,
-                        type: "page",
-                        title: "El Equipo Multidisciplinario",
-                        convertedHtml: `
-                            <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Trabajo en Equipo para una Atención Integral</h2>
+                                <h3 style="color: var(--slide-title-color); margin-bottom: 1rem; margin-top: 2rem;">Trabajo en Equipo para una Atención Integral</h3>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 2rem;">Los cuidados paliativos requieren un enfoque multidisciplinario donde diversos profesionales trabajan en conjunto para atender todas las necesidades del paciente y su familia.</p>
-                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
                                     <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; text-align: center;">
                                         <h4 style="color: #7fb3c4; margin-bottom: 0.5rem;">👨‍⚕️ Médicos</h4>
                                         <p style="color: #718096; font-size: 0.95rem;">Diagnóstico y tratamiento médico</p>
@@ -699,29 +736,8 @@
                         `
                     },
                     {
-                        id: "slide-3",
-                        order: 3,
-                        type: "page",
-                        title: "Control del Dolor",
-                        convertedHtml: `
-                            <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Manejo Efectivo del Dolor</h2>
-                                <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">El control del dolor es fundamental en los cuidados paliativos. Un manejo adecuado mejora significativamente la calidad de vida del paciente.</p>
-                                <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&h=400&fit=crop" alt="Medicamentos" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
-                                <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #a8d5e2; margin-bottom: 2rem;">
-                                    <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Escalera Analgésica de la OMS:</h4>
-                                    <ul style="color: #718096; line-height: 2;">
-                                        <li><strong>Escalón 1:</strong> Dolor leve - Analgésicos no opioides</li>
-                                        <li><strong>Escalón 2:</strong> Dolor moderado - Opioides débiles</li>
-                                        <li><strong>Escalón 3:</strong> Dolor severo - Opioides potentes</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        `
-                    },
-                    {
-                        id: "slide-4",
-                        order: 4,
+                        id: "slide-1",
+                        order: 1,
                         type: "quiz",
                         title: "Evaluación: Conceptos Básicos",
                         content: {
@@ -739,15 +755,22 @@
                         }
                     },
                     {
-                        id: "slide-5",
-                        order: 5,
+                        id: "slide-2",
+                        order: 2,
                         type: "page",
-                        title: "Síntomas Comunes y su Manejo",
+                        title: "Síntomas Comunes y Comunicación Efectiva",
                         convertedHtml: `
                             <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Identificación y Tratamiento de Síntomas</h2>
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_2.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Identificación y Tratamiento de Síntomas</h2>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 2rem;">Los pacientes en cuidados paliativos pueden experimentar diversos síntomas que requieren atención especializada:</p>
-                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
                                     <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px;">
                                         <h4 style="color: #d4a373; margin-bottom: 1rem;">🤕 Dolor</h4>
                                         <p style="color: #718096; font-size: 0.95rem;">Evaluación continua con escalas de dolor. Tratamiento farmacológico y no farmacológico.</p>
@@ -773,23 +796,13 @@
                                         <p style="color: #718096; font-size: 0.95rem;">Comidas pequeñas frecuentes, alimentos favoritos, estimulantes del apetito.</p>
                                     </div>
                                 </div>
-                            </div>
-                        `
-                    },
-                    {
-                        id: "slide-6",
-                        order: 6,
-                        type: "page",
-                        title: "Comunicación con el Paciente",
-                        convertedHtml: `
-                            <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Habilidades de Comunicación Efectiva</h2>
-                                <div style="margin-bottom: 2rem;">
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem; margin-top: 2rem;">Habilidades de Comunicación Efectiva</h2>
+                                <div class="desktop-text-image-layout" style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                    <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin: 0;">La comunicación efectiva es esencial en los cuidados paliativos. Permite establecer confianza, comprender las necesidades del paciente y tomar decisiones compartidas.</p>
                                     <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=400&fit=crop" alt="Comunicación médico-paciente" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 </div>
-                                <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">La comunicación efectiva es esencial en los cuidados paliativos. Permite establecer confianza, comprender las necesidades del paciente y tomar decisiones compartidas.</p>
                                 <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
-                                    <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Principios Clave:</h4>
+                                    <h4 style="color: var(--slide-title-color); margin-bottom: 1rem;">Principios Clave:</h4>
                                     <ul style="color: #718096; line-height: 2;">
                                         <li><strong>Escucha activa:</strong> Prestar atención completa sin interrumpir</li>
                                         <li><strong>Empatía:</strong> Mostrar comprensión de los sentimientos del paciente</li>
@@ -802,20 +815,27 @@
                         `
                     },
                     {
-                        id: "slide-7",
-                        order: 7,
+                        id: "slide-3",
+                        order: 3,
                         type: "page",
                         title: "Apoyo a la Familia",
                         convertedHtml: `
                             <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Cuidado Integral de la Familia</h2>
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_3.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Cuidado Integral de la Familia</h2>
                                 <div style="margin-bottom: 2rem;">
                                     <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=400&fit=crop" alt="Familia unida" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
                                     <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568;">La familia es parte integral del cuidado paliativo. Los miembros familiares a menudo asumen roles de cuidadores y necesitan apoyo emocional, educación y recursos.</p>
                                 </div>
                                 <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px;">
-                                    <h4 style="color: #d4a373; margin-bottom: 1rem;">Áreas de Apoyo Familiar:</h4>
-                                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                                    <h4 style="color: var(--color-secondary); margin-bottom: 1rem;">Áreas de Apoyo Familiar:</h4>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
                                         <div style="padding: 1rem; background: white; border-radius: 6px;">
                                             <strong style="color: #7fb3c4;">Educación:</strong>
                                             <p style="color: #718096; margin: 0.5rem 0 0 0; font-size: 0.95rem;">Enseñar habilidades de cuidado básico</p>
@@ -838,8 +858,8 @@
                         `
                     },
                     {
-                        id: "slide-8",
-                        order: 8,
+                        id: "slide-4",
+                        order: 4,
                         type: "dragdrop",
                         title: "Actividad: Categoriza las Intervenciones",
                         content: {
@@ -865,18 +885,25 @@
                         }
                     },
                     {
-                        id: "slide-9",
-                        order: 9,
+                        id: "slide-5",
+                        order: 5,
                         type: "page",
                         title: "Cuidados al Final de la Vida",
                         convertedHtml: `
                             <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Acompañamiento en la Etapa Final</h2>
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_5.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Acompañamiento en la Etapa Final</h2>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 2rem;">Los últimos días y horas de vida requieren cuidados especiales centrados en la comodidad y dignidad del paciente.</p>
-                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
                                     <div>
                                         <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; height: 100%;">
-                                            <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Signos de Aproximación de la Muerte:</h4>
+                                            <h4 style="color: var(--slide-title-color); margin-bottom: 1rem;">Signos de Aproximación de la Muerte:</h4>
                                             <ul style="color: #718096; line-height: 1.8; font-size: 0.95rem;">
                                                 <li>Disminución del nivel de conciencia</li>
                                                 <li>Cambios en el patrón respiratorio</li>
@@ -888,7 +915,7 @@
                                     </div>
                                     <div>
                                         <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px; height: 100%;">
-                                            <h4 style="color: #d4a373; margin-bottom: 1rem;">Cuidados Prioritarios:</h4>
+                                            <h4 style="color: var(--color-secondary); margin-bottom: 1rem;">Cuidados Prioritarios:</h4>
                                             <ul style="color: #718096; line-height: 1.8; font-size: 0.95rem;">
                                                 <li>Control de síntomas molestos</li>
                                                 <li>Cuidado de la piel y posicionamiento</li>
@@ -906,18 +933,25 @@
                         `
                     },
                     {
-                        id: "slide-10",
-                        order: 10,
+                        id: "slide-6",
+                        order: 6,
                         type: "page",
                         title: "Aspectos Éticos en Cuidados Paliativos",
                         convertedHtml: `
                             <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Dilemas Éticos y Toma de Decisiones</h2>
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_6.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Dilemas Éticos y Toma de Decisiones</h2>
                                 <div style="margin-bottom: 2rem;">
                                     <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop" alt="Ética médica" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 </div>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">Los cuidados paliativos involucran importantes consideraciones éticas que guían la toma de decisiones centrada en el paciente.</p>
-                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
                                     <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; text-align: center;">
                                         <h4 style="color: #7fb3c4; font-size: 1rem; margin-bottom: 0.5rem;">Autonomía</h4>
                                         <p style="color: #718096; font-size: 0.9rem; margin: 0;">Derecho a decidir</p>
@@ -936,7 +970,7 @@
                                     </div>
                                 </div>
                                 <div style="background: #ffe8e8; padding: 1.5rem; border-radius: 8px;">
-                                    <h4 style="color: #d99999; margin-bottom: 1rem;">Consideraciones Importantes:</h4>
+                                    <h4 style="color: var(--color-secondary); margin-bottom: 1rem;">Consideraciones Importantes:</h4>
                                     <ul style="color: #718096; line-height: 1.8;">
                                         <li>Voluntades anticipadas y testamentos vitales</li>
                                         <li>Limitación del esfuerzo terapéutico</li>
@@ -948,8 +982,8 @@
                         `
                     },
                     {
-                        id: "slide-11",
-                        order: 11,
+                        id: "slide-7",
+                        order: 7,
                         type: "quiz",
                         title: "Evaluación: Práctica Clínica",
                         content: {
@@ -967,17 +1001,24 @@
                         }
                     },
                     {
-                        id: "slide-12",
-                        order: 12,
+                        id: "slide-8",
+                        order: 8,
                         type: "page",
                         title: "Calidad de Vida en Cuidados Paliativos",
                         convertedHtml: `
                             <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Maximizando el Bienestar del Paciente</h2>
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_8.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Maximizando el Bienestar del Paciente</h2>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem;">La calidad de vida es un concepto multidimensional que incluye aspectos físicos, psicológicos, sociales y espirituales del bienestar del paciente.</p>
                                 <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&h=400&fit=crop" alt="Calidad de vida" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
                                 <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-                                    <h4 style="color: #7fb3c4; margin-bottom: 1rem;">Dimensiones de Calidad de Vida:</h4>
+                                    <h4 style="color: var(--slide-title-color); margin-bottom: 1rem;">Dimensiones de Calidad de Vida:</h4>
                                     <ul style="color: #718096; line-height: 2; font-size: 0.95rem;">
                                         <li>✨ Bienestar físico y control de síntomas</li>
                                         <li>💭 Bienestar psicológico y emocional</li>
@@ -990,15 +1031,22 @@
                         `
                     },
                     {
-                        id: "slide-13",
-                        order: 13,
+                        id: "slide-9",
+                        order: 9,
                         type: "page",
                         title: "Recursos y Apoyo Disponibles",
                         convertedHtml: `
                             <div class="slide-content">
-                                <h2 style="color: #7fb3c4; margin-bottom: 1.5rem;">Red de Apoyo y Recursos</h2>
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_9.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <h2 style="color: var(--slide-title-color); margin-bottom: 1.5rem;">Red de Apoyo y Recursos</h2>
                                 <p style="font-size: 1.05rem; line-height: 1.8; color: #4a5568; margin-bottom: 2rem;">Existen diversos recursos y servicios disponibles para pacientes y familias en cuidados paliativos:</p>
-                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                                     <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px;">
                                         <h4 style="color: #7fb3c4; margin-bottom: 1rem;">🏥 Servicios Médicos</h4>
                                         <ul style="color: #718096; line-height: 1.8; font-size: 0.95rem;">
@@ -1040,43 +1088,60 @@
                         `
                     },
                     {
-                        id: "slide-14",
-                        order: 14,
-                        type: "conclusion",
+                        id: "slide-10",
+                        order: 10,
+                        type: "page",
                         title: "Gracias por tu Dedicación",
-                        content: {
-                            type: "tiptap",
-                            content: [
-                                {
-                                    type: "paragraph",
-                                    content: [
-                                        {
-                                            type: "text",
-                                            text: "Has completado exitosamente este curso sobre Cuidados Paliativos. Los conocimientos adquiridos te permitirán brindar una atención más compasiva y de mayor calidad a los pacientes y sus familias."
-                                        }
-                                    ]
-                                },
-                                {
-                                    type: "paragraph",
-                                    content: [
-                                        {
-                                            type: "text",
-                                            text: "Recuerda: El verdadero arte de los cuidados paliativos no está solo en el tratamiento médico, sino en acompañar con dignidad, compasión y respeto en cada momento del viaje."
-                                        }
-                                    ]
-                                },
-                                {
-                                    type: "paragraph",
-                                    content: [
-                                        {
-                                            type: "text",
-                                            marks: [{ type: "bold" }],
-                                            text: "\"Dar calidad a la vida significa dar calidad a cada día\""
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                        convertedHtml: `
+                            <div class="slide-content">
+                                <div class="audio-player">
+                                    <span class="audio-icon">🎧</span>
+                                    <audio controls preload="metadata">
+                                        <source src="audio_10.mp3" type="audio/mpeg">
+                                        Tu navegador no soporta el elemento de audio.
+                                    </audio>
+                                </div>
+                                <div style="text-align: center; margin-bottom: 2rem;">
+                                    <div style="display: inline-block; background: linear-gradient(135deg, #6ba3ba 0%, #8fb37d 100%); padding: 2rem; border-radius: 50%; margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(107, 163, 186, 0.3);">
+                                        <span style="font-size: 4rem;">🎓</span>
+                                    </div>
+                                    <h2 style="color: var(--slide-title-color); font-size: 2rem; margin-bottom: 1rem;">¡Felicitaciones!</h2>
+                                    <p style="font-size: 1.2rem; color: var(--text-secondary); font-weight: 500;">Has completado exitosamente el curso</p>
+                                </div>
+                                
+                                <div style="background: linear-gradient(135deg, #e8f3f8 0%, #f0f8fa 100%); padding: 2rem; border-radius: 12px; border-left: 5px solid var(--color-primary); margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                                    <p style="font-size: 1.1rem; line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem; text-align: center;">
+                                        Los conocimientos adquiridos te permitirán brindar una atención más <strong>compasiva</strong> y de <strong>mayor calidad</strong> a los pacientes y sus familias.
+                                    </p>
+                                    <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 8px; margin-top: 1.5rem;">
+                                        <p style="font-size: 1.05rem; color: #718096; font-style: italic; margin: 0; line-height: 1.8;">
+                                            💚 El verdadero arte de los cuidados paliativos no está solo en el tratamiento médico, sino en acompañar con <strong style="color: var(--slide-title-color);">dignidad</strong>, <strong style="color: var(--slide-title-color);">compasión</strong> y <strong style="color: var(--slide-title-color);">respeto</strong> en cada momento del viaje.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                                    <div style="background: #e8f3f8; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                                        <p style="color: #718096; font-size: 0.95rem; margin: 0; font-weight: 600;">Contenido Completado</p>
+                                    </div>
+                                    <div style="background: #fef3e2; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌟</div>
+                                        <p style="color: #718096; font-size: 0.95rem; margin: 0; font-weight: 600;">Nuevas Habilidades</p>
+                                    </div>
+                                    <div style="background: #e8f3e8; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">💪</div>
+                                        <p style="color: #718096; font-size: 0.95rem; margin: 0; font-weight: 600;">Listo para Aplicar</p>
+                                    </div>
+                                </div>
+
+                                <div style="text-align: center; margin-top: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 8px;">
+                                    <p style="color: var(--text-muted); font-size: 1rem; margin: 0;">
+                                        ✨ Gracias por tu dedicación y compromiso con la excelencia en el cuidado ✨
+                                    </p>
+                                </div>
+                            </div>
+                        `
                     }
                 ]
             }
@@ -1084,7 +1149,7 @@
 
         // Variable para rastrear el índice actual de slides
         let currentIndex = 0;
-        let totalSlidesCount = 15; // Actualizar según el número total de slides
+        let totalSlidesCount = 11; // Actualizar según el número total de slides
         let isNavigating = false;
 
         // Funciones de navegación que se conectan con CourseApp
