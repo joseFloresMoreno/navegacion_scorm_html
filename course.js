@@ -746,6 +746,18 @@
       case 'quiz':
         slideHtml += '<div class="slide-content p-8 bg-white">';
         
+        // Audio player
+        if (content?.audioSrc || slide.audioSrc) {
+          var audioSrc = content?.audioSrc || slide.audioSrc;
+          slideHtml += '<div class="audio-player">';
+          slideHtml += '<span class="audio-icon">🎧</span>';
+          slideHtml += '<audio controls preload="metadata">';
+          slideHtml += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
+          slideHtml += 'Tu navegador no soporta el elemento de audio.';
+          slideHtml += '</audio>';
+          slideHtml += '</div>';
+        }
+        
         // Header del quiz
         slideHtml += '<div class="container">';
         slideHtml += '<div class="row justify-content-center">';
@@ -826,6 +838,18 @@
         
       case 'dragdrop':
         slideHtml += '<div class="slide-content p-8 bg-white">';
+        
+        // Audio player
+        if (content?.audioSrc || slide.audioSrc) {
+          var audioSrc = content?.audioSrc || slide.audioSrc;
+          slideHtml += '<div class="audio-player">';
+          slideHtml += '<span class="audio-icon">🎧</span>';
+          slideHtml += '<audio controls preload="metadata">';
+          slideHtml += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
+          slideHtml += 'Tu navegador no soporta el elemento de audio.';
+          slideHtml += '</audio>';
+          slideHtml += '</div>';
+        }
         
         if (slide.title) {
           slideHtml += '<h1 class="text-3xl font-bold mb-6">' + escapeHtml(slide.title) + '</h1>';
@@ -914,6 +938,104 @@
         slideHtml += '<p class="text-muted mb-4">' + escapeHtml(content?.feedbackIncorrect || 'Algunos elementos no están en la categoría correcta. Revisa y vuelve a intentarlo.') + '</p>';
         slideHtml += '<button type="button" class="btn btn-danger btn-lg px-5 rounded-pill" onclick="CourseApp.closeDragDropModal(\'' + slide.id + '\', \'incorrect\')">Intentar de nuevo</button>';
         slideHtml += '</div></div></div></div>';
+        break;
+        
+      case 'infoCards':
+        slideHtml += '<div class="slide-content p-8 bg-white">';
+        
+        // Audio player
+        if (content?.audioSrc || slide.audioSrc) {
+          var audioSrc = content?.audioSrc || slide.audioSrc;
+          slideHtml += '<div class="audio-player">';
+          slideHtml += '<span class="audio-icon">🎧</span>';
+          slideHtml += '<audio controls preload="metadata">';
+          slideHtml += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
+          slideHtml += 'Tu navegador no soporta el elemento de audio.';
+          slideHtml += '</audio>';
+          slideHtml += '</div>';
+        }
+        
+        slideHtml += '<div class="container">';
+        slideHtml += '<div class="row justify-content-center">';
+        slideHtml += '<div class="col-lg-10">';
+        
+        if (slide.title) {
+          slideHtml += '<h2 class="mb-3" style="color: var(--slide-title-color);">' + escapeHtml(slide.title) + '</h2>';
+        }
+        
+        if (content?.description) {
+          slideHtml += '<p class="text-md mb-4" style="color: #4a5568;">' + escapeHtml(content.description) + '</p>';
+        }
+        
+        var cards = content?.cards || [];
+        
+        // Grid de tarjetas
+        slideHtml += '<div class="row g-4 mb-4">';
+        cards.forEach(function(card, index) {
+          var cardId = 'card-' + slide.id + '-' + index;
+          var bgColor = card.bgColor || '#e8f3f8';
+          var iconColor = card.iconColor || '#7fb3c4';
+          
+          slideHtml += '<div class="col-md-6 col-lg-4">';
+          slideHtml += '<div class="info-card-item h-100 p-4 rounded-3 cursor-pointer transition-all" ';
+          slideHtml += 'style="background: ' + bgColor + ';" ';
+          slideHtml += 'onclick="CourseApp.openInfoCardModal(\'' + slide.id + '\', ' + index + ')">';
+          
+          if (card.icon) {
+            slideHtml += '<div class="text-center mb-3" style="font-size: 3rem;">' + escapeHtml(card.icon) + '</div>';
+          }
+          
+          slideHtml += '<h4 class="text-center mb-2" style="color: ' + iconColor + ';">' + escapeHtml(card.title) + '</h4>';
+          
+          if (card.subtitle) {
+            slideHtml += '<p class="text-sm text-center mb-0" style="color: #718096;">' + escapeHtml(card.subtitle) + '</p>';
+          }
+          
+          slideHtml += '<div class="text-center mt-3">';
+          slideHtml += '<i class="bi bi-info-circle" style="color: ' + iconColor + '; font-size: 1.2rem;"></i>';
+          slideHtml += '</div>';
+          
+          slideHtml += '</div></div>';
+        });
+        slideHtml += '</div>';
+        
+        slideHtml += '</div></div></div></div>'; // Cierre columnas y container
+        
+        // Modales para cada tarjeta
+        cards.forEach(function(card, index) {
+          var modalId = 'infocard-modal-' + slide.id + '-' + index;
+          
+          slideHtml += '<div class="modal fade" id="' + modalId + '" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">';
+          slideHtml += '<div class="modal-dialog modal-dialog-centered modal-xl">';
+          slideHtml += '<div class="modal-content border-0 shadow-lg">';
+          
+          // Header del modal
+          slideHtml += '<div class="modal-header border-0 pb-0">';
+          slideHtml += '<h5 class="modal-title fw-bold" style="color: var(--slide-title-color);">' + escapeHtml(card.title) + '</h5>';
+          slideHtml += '<button type="button" class="btn-close" onclick="CourseApp.closeInfoCardModal(\'' + slide.id + '\', ' + index + ')"></button>';
+          slideHtml += '</div>';
+          
+          // Body del modal
+          slideHtml += '<div class="modal-body p-4">';
+          
+          if (card.icon) {
+            slideHtml += '<div class="text-center mb-4" style="font-size: 4rem;">' + escapeHtml(card.icon) + '</div>';
+          }
+          
+          if (card.modalContent) {
+            slideHtml += '<div class="prose max-w-none">' + card.modalContent + '</div>';
+          }
+          
+          slideHtml += '</div>';
+          
+          // Footer del modal
+          slideHtml += '<div class="modal-footer border-0">';
+          slideHtml += '<button type="button" class="btn btn-primary px-4 rounded-pill" onclick="CourseApp.closeInfoCardModal(\'' + slide.id + '\', ' + index + ')">Cerrar</button>';
+          slideHtml += '</div>';
+          
+          slideHtml += '</div></div></div>';
+        });
+        
         break;
         
         // Modal de feedback correcto
@@ -1673,6 +1795,37 @@
               explanationDiv.classList.add('d-none');
             }
           }, 300);
+        }
+      }
+    },
+    
+    // InfoCards Modal functions
+    openInfoCardModal: function(slideId, cardIndex) {
+      var modalId = 'infocard-modal-' + slideId + '-' + cardIndex;
+      var modalElement = document.getElementById(modalId);
+      
+      console.log('Abriendo modal de info card:', modalId, 'Elemento:', modalElement);
+      
+      if (modalElement) {
+        if (typeof bootstrap !== 'undefined') {
+          var modal = new bootstrap.Modal(modalElement);
+          modal.show();
+        } else {
+          console.error('Bootstrap no está disponible');
+        }
+      } else {
+        console.error('No se encontró el modal:', modalId);
+      }
+    },
+    
+    closeInfoCardModal: function(slideId, cardIndex) {
+      var modalId = 'infocard-modal-' + slideId + '-' + cardIndex;
+      var modalElement = document.getElementById(modalId);
+      
+      if (modalElement && typeof bootstrap !== 'undefined') {
+        var modal = bootstrap.Modal.getInstance(modalElement);
+        if (modal) {
+          modal.hide();
         }
       }
     },
