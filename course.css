@@ -34,7 +34,7 @@
     --progress-dot-completed: rgba(26, 32, 44, 0.65);
     
     /* Visibilidad de progress dots (flex = visible, none = oculto) */
-    --progress-dots-display-desktop: flex;
+    --progress-dots-display-desktop: none;
     --progress-dots-display-mobile: none;
     
     /* Colores de botones */
