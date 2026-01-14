@@ -1152,9 +1152,8 @@
     // Next button
     if (currentSlideIndex < slides.length - 1) {
       navHtml += '<button onclick="CourseApp.nextSlide()" class="px-4 py-2 bg-white/80 hover:bg-white rounded-lg text-gray-800 font-medium">Next</button>';
-    } else {
-      navHtml += '<button onclick="CourseApp.completeCourse()" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium">Complete Course</button>';
     }
+    // Si es la última slide, no mostrar botón aquí - la navegación personalizada de course.html lo maneja
     
     navHtml += '</div></div>';
     container.insertAdjacentHTML('beforeend', navHtml);
@@ -1238,12 +1237,7 @@
     // Update progress
     updateProgress();
     
-    // Check if course is complete
-    if (visitedPages.size === totalPages && totalPages > 0) {
-      setTimeout(function() {
-        completeCourse();
-      }, 1000);
-    }
+    // NO completar automáticamente - solo con el botón del modal
   }
   
   // Find page in plan hierarchy
@@ -1309,11 +1303,26 @@
   function updateProgress() {
     var progress = 0;
     if (courseData.courseData.navigationMode === 'slides') {
-      progress = totalSlides > 0 ? (visitedSlides.size / totalSlides) * 100 : 0;
+      // Calcular porcentaje basado en la slide actual vs total de slides
+      progress = totalSlides > 0 ? ((currentSlideIndex + 1) / totalSlides) * 100 : 0;
+      console.log('📊 [DEBUG] Progreso:', {
+        slideActual: currentSlideIndex + 1,
+        totalSlides: totalSlides,
+        porcentaje: Math.round(progress) + '%',
+        scoreRaw: Math.round(progress)
+      });
     } else {
+      // Para modo páginas, usar el conteo de páginas visitadas
       progress = totalPages > 0 ? (visitedPages.size / totalPages) * 100 : 0;
+      console.log('📊 [DEBUG] Progreso:', {
+        paginasVisitadas: visitedPages.size,
+        totalPaginas: totalPages,
+        porcentaje: Math.round(progress) + '%',
+        scoreRaw: Math.round(progress)
+      });
     }
     
+    // Actualizar score.raw con el porcentaje de avance (NO es una nota, es progreso)
     setValue('cmi.core.score.raw', Math.round(progress).toString());
     commit();
   }
@@ -1339,34 +1348,10 @@
     console.log('📊 [SCORM 1.2] Sending course completion data to LMS...');
     setValue('cmi.core.lesson_status', 'completed');
     
-    // Calculate progress-based score
-    var progress = 0;
-    if (courseData.courseData.navigationMode === 'slides') {
-      progress = totalSlides > 0 ? (visitedSlides.size / totalSlides) * 100 : 100;
-    } else {
-      progress = totalPages > 0 ? (visitedPages.size / totalPages) * 100 : 100;
-    }
-    
-    // Set score if provided, otherwise use progress
-    if (data && typeof data.score === 'number') {
-      var rawScore = data.score;
-      var maxScore = data.maxScore || 100;
-      
-      console.log('📊 [SCORM 1.2] Score calculation:', {
-        raw: rawScore,
-        max: maxScore
-      });
-      
-      setValue('cmi.core.score.raw', rawScore.toString());
-      setValue('cmi.core.score.min', '0');
-      setValue('cmi.core.score.max', maxScore.toString());
-    } else {
-      // Use progress as score
-      setValue('cmi.core.score.raw', Math.round(progress).toString());
-      setValue('cmi.core.score.min', '0');
-      setValue('cmi.core.score.max', '100');
-    }
-    
+    // Al finalizar, establecer score.raw en 100 (curso completado)
+    setValue('cmi.core.score.raw', '100');
+    setValue('cmi.core.score.min', '0');
+    setValue('cmi.core.score.max', '100');
     setValue('cmi.core.exit', 'normal');
     
     // Commit the data to LMS

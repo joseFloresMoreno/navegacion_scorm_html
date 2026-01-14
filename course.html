@@ -304,16 +304,18 @@
         }
 
         // Función para mostrar el modal de completado
+        // Función para mostrar el modal de completado
         function showCompletionModal() {
+            // Llamar a la función SCORM de completado cuando se presiona "Finalizar Curso"
+            if (window.CourseApp && typeof window.CourseApp.completeCourse === 'function') {
+                console.log('✅ Finalizando curso en SCORM...');
+                window.CourseApp.completeCourse();
+            }
+            
+            // Mostrar el modal
             const modal = document.getElementById('completion-modal');
             if (modal) {
                 modal.classList.add('show');
-                
-                // Llamar a la función SCORM de completado
-                if (window.CourseApp && typeof window.CourseApp.completeCourse === 'function') {
-                    console.log('✅ Llamando a CourseApp.completeCourse()');
-                    window.CourseApp.completeCourse();
-                }
             }
         }
 
@@ -360,10 +362,7 @@
                     
                     // Esperar a que se renderice el contenido
                     setTimeout(() => {
-                        customizeNavigation();
-                        setupContentObserver();
-                        
-                        // Sincronizar currentIndex con la posición guardada en SCORM
+                        // Primero sincronizar currentIndex con la posición guardada en SCORM
                         const savedPosition = scormGetValue('cmi.core.lesson_location');
                         if (savedPosition && savedPosition !== '' && !isNaN(parseInt(savedPosition))) {
                             currentIndex = parseInt(savedPosition);
@@ -375,6 +374,9 @@
                             currentIndex = 0;
                         }
                         
+                        // Luego personalizar la navegación con el currentIndex correcto
+                        customizeNavigation();
+                        setupContentObserver();
                         updateCustomNav();
                     }, 800);
                 } else {
