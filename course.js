@@ -964,7 +964,7 @@
         }
         
         if (content?.description) {
-          slideHtml += '<p class="text-md mb-4" style="color: #4a5568;">' + escapeHtml(content.description) + '</p>';
+          slideHtml += '<p class="text-md mb-4" style="color: #4a5568;">' + escapeHtml(content.description) + ' ' + '<b>' + escapeHtml(content.description_highlight || '') + '</b></p>';
         }
         
         var cards = content?.cards || [];

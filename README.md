@@ -472,17 +472,6 @@ Comprimir todos los archivos en la raíz del ZIP (sin carpetas contenedoras).
 ### 3. Subir al LMS:
 Importar el paquete ZIP como contenido SCORM 1.2.
 
-## 🎨 Paleta de Colores Predeterminada
-
-```css
-Azul claro:    #e8f3f8 / #7fb3c4
-Beige:         #fef3e2 / #d4a373
-Verde claro:   #e8f3e8 / #a0c491
-Morado claro:  #f3e8f8 / #b19cd9
-Rosa claro:    #ffe8e8 / #d99999
-Turquesa:      #e8f8f8 / #7fc4c4
-```
-
 ## 📝 Mejores Prácticas
 
 ### Contenido
@@ -534,11 +523,6 @@ Turquesa:      #e8f8f8 / #7fc4c4
 ## 📄 Licencia
 
 Este proyecto es una plantilla educativa para cursos SCORM.
-
-## 👥 Soporte
-
-Para más información sobre tipos específicos de slides:
-- Ver `INFOCARDS_README.md` para InfoCards detallado
 
 ---
 
