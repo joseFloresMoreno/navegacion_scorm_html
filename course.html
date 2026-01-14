@@ -86,11 +86,36 @@
         let totalSlidesCount = 13; // Actualizar según el número total de slides
         let isNavigating = false;
 
+        // Funciones helper para SCORM
+        function scormSetValue(param, value) {
+            if (window.CourseApp && typeof window.CourseApp.setValue === 'function') {
+                window.CourseApp.setValue(param, value);
+            }
+        }
+
+        function scormGetValue(param) {
+            if (window.CourseApp && typeof window.CourseApp.getValue === 'function') {
+                return window.CourseApp.getValue(param);
+            }
+            return '';
+        }
+
+        function scormCommit() {
+            if (window.CourseApp && typeof window.CourseApp.commit === 'function') {
+                window.CourseApp.commit();
+            }
+        }
+
         // Funciones de navegación que se conectan con CourseApp
         function nextSlide() {
             if (isNavigating || currentIndex >= totalSlidesCount - 1) return;
             isNavigating = true;
             currentIndex++;
+            
+            // Guardar posición para SCORM resume
+            scormSetValue('cmi.core.lesson_location', currentIndex.toString());
+            scormCommit();
+            
             if (window.CourseApp && typeof window.CourseApp.nextSlide === 'function') {
                 window.CourseApp.nextSlide();
             }
@@ -107,6 +132,11 @@
             if (isNavigating || currentIndex <= 0) return;
             isNavigating = true;
             currentIndex--;
+            
+            // Guardar posición para SCORM resume
+            scormSetValue('cmi.core.lesson_location', currentIndex.toString());
+            scormCommit();
+            
             if (window.CourseApp && typeof window.CourseApp.previousSlide === 'function') {
                 window.CourseApp.previousSlide();
             }
@@ -241,6 +271,11 @@
             if (isNavigating || index < 0 || index >= totalSlidesCount) return;
             isNavigating = true;
             currentIndex = index;
+            
+            // Guardar posición para SCORM resume
+            scormSetValue('cmi.core.lesson_location', currentIndex.toString());
+            scormCommit();
+            
             if (window.CourseApp && typeof window.CourseApp.goToSlide === 'function') {
                 window.CourseApp.goToSlide(index);
             }
@@ -328,8 +363,18 @@
                         customizeNavigation();
                         setupContentObserver();
                         
-                        // Actualizar navegación inicial
-                        currentIndex = 0;
+                        // Sincronizar currentIndex con la posición guardada en SCORM
+                        const savedPosition = scormGetValue('cmi.core.lesson_location');
+                        if (savedPosition && savedPosition !== '' && !isNaN(parseInt(savedPosition))) {
+                            currentIndex = parseInt(savedPosition);
+                            // Validar que el índice esté dentro del rango
+                            if (currentIndex < 0 || currentIndex >= totalSlidesCount) {
+                                currentIndex = 0;
+                            }
+                        } else {
+                            currentIndex = 0;
+                        }
+                        
                         updateCustomNav();
                     }, 800);
                 } else {

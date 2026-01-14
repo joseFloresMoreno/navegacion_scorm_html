@@ -507,7 +507,19 @@
     });
     
     allSlides = sortedSlides;
-    currentSlideIndex = 0;
+    
+    // SCORM Resume: Intentar retomar en la última slide vista
+    var savedPosition = getValue('cmi.core.lesson_location');
+    if (savedPosition && savedPosition !== '' && !isNaN(parseInt(savedPosition))) {
+      currentSlideIndex = parseInt(savedPosition);
+      // Validar que el índice esté dentro del rango
+      if (currentSlideIndex < 0 || currentSlideIndex >= sortedSlides.length) {
+        currentSlideIndex = 0;
+      }
+    } else {
+      currentSlideIndex = 0;
+    }
+    
     renderSlide(sortedSlides[currentSlideIndex], container, sortedSlides);
     
     // Add navigation controls
@@ -1829,6 +1841,11 @@
         }
       }
     },
+    
+    // Expose SCORM functions directly for use in course.html
+    setValue: setValue,
+    getValue: getValue,
+    commit: commit,
     
     // Expose SCORM functions for debugging
     scorm: {
