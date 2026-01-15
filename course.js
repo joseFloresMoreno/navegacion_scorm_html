@@ -467,6 +467,9 @@
     setValue('cmi.core.lesson_status', 'incomplete');
     commit();
     
+    // Cargar interacciones guardadas
+    loadInteractions();
+    
     const contentDiv = document.getElementById('course-content');
     if (!contentDiv) return;
     
@@ -1327,6 +1330,33 @@
     commit();
   }
   
+  // Guardar interacciones en cmi.suspend_data
+  function saveInteractions() {
+    var interactionsData = {
+      quizAnswers: quizAnswers
+    };
+    var jsonData = JSON.stringify(interactionsData);
+    setValue('cmi.suspend_data', jsonData);
+    commit();
+    console.log('💾 [SCORM] Interacciones guardadas:', interactionsData);
+  }
+  
+  // Cargar interacciones desde cmi.suspend_data
+  function loadInteractions() {
+    var savedData = getValue('cmi.suspend_data');
+    if (savedData && savedData !== '') {
+      try {
+        var interactionsData = JSON.parse(savedData);
+        if (interactionsData.quizAnswers) {
+          quizAnswers = interactionsData.quizAnswers;
+          console.log('📚 [SCORM] Interacciones cargadas:', interactionsData);
+        }
+      } catch (e) {
+        console.error('❌ Error al parsear suspend_data:', e);
+      }
+    }
+  }
+  
   // Escape HTML
   function escapeHtml(str) {
     if (!str) return '';
@@ -1462,6 +1492,9 @@
         correct: isCorrect,
         selectedIndex: selectedIndex
       };
+      
+      // Guardar en SCORM suspend_data
+      saveInteractions();
       
       // Deshabilitar todas las opciones del quiz
       var allRadios = document.querySelectorAll('input[name="' + quizId + '"]');
@@ -1710,6 +1743,9 @@
         answered: true,
         correct: allCorrect
       };
+      
+      // Guardar en SCORM suspend_data
+      saveInteractions();
       
       // Mostrar explicación
       var explanationDiv = document.getElementById('dragdrop-explanation-' + slideId);
