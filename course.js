@@ -549,6 +549,26 @@
     return hasBackgroundMedia;
   }
   
+  // Helper function to render audio player (reusable component)
+  function renderAudioPlayer(content, slide) {
+    var audioSrc = content?.audioSrc || slide?.audioSrc;
+    
+    // Solo retornar HTML si hay una ruta de audio
+    if (!audioSrc) {
+      return '';
+    }
+    
+    var html = '<div class="audio-player">';
+    html += '<span class="audio-icon">🎧</span>';
+    html += '<audio controls preload="metadata">';
+    html += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
+    html += 'Tu navegador no soporta el elemento de audio.';
+    html += '</audio>';
+    html += '</div>';
+    
+    return html;
+  }
+  
   // Render a single slide
   function renderSlide(slide, container, allSlides) {
     if (!slide) return;
@@ -557,7 +577,29 @@
     
     // If slide has pre-converted HTML, use it directly
     if (slide.convertedHtml) {
-      container.innerHTML = '<div class="slide-container w-full min-h-screen relative overflow-hidden">' + slide.convertedHtml + '</div>';
+      var slideHtml = '<div class="slide-container w-full min-h-screen relative overflow-hidden">';
+      
+      // Inject audio player at the beginning of the content if audioSrc exists
+      var audioPlayerHtml = renderAudioPlayer(slide.content, slide);
+      if (audioPlayerHtml) {
+        // Insert audio player right after the opening div of slide-content
+        var convertedHtml = slide.convertedHtml;
+        var slideContentIndex = convertedHtml.indexOf('<div class="slide-content">');
+        if (slideContentIndex !== -1) {
+          var insertPosition = slideContentIndex + '<div class="slide-content">'.length;
+          convertedHtml = convertedHtml.slice(0, insertPosition) + '\n' + audioPlayerHtml + convertedHtml.slice(insertPosition);
+        } else {
+          // If no slide-content div, prepend to the beginning
+          convertedHtml = audioPlayerHtml + convertedHtml;
+        }
+        slideHtml += convertedHtml;
+      } else {
+        slideHtml += slide.convertedHtml;
+      }
+      
+      slideHtml += '</div>';
+      container.innerHTML = slideHtml;
+      
       // Re-execute any scripts in the converted HTML
       var scripts = container.querySelectorAll('script');
       scripts.forEach(function(oldScript) {
@@ -578,6 +620,10 @@
     switch (slide.type) {
       case 'page':
         slideHtml += '<div class="p-8 bg-white">';
+        
+        // Audio player
+        slideHtml += renderAudioPlayer(content, slide);
+        
         if (slide.title) {
           slideHtml += '<h1 class="text-3xl font-bold mb-6">' + escapeHtml(slide.title) + '</h1>';
         }
@@ -762,16 +808,7 @@
         slideHtml += '<div class="slide-content p-8 bg-white">';
         
         // Audio player
-        if (content?.audioSrc || slide.audioSrc) {
-          var audioSrc = content?.audioSrc || slide.audioSrc;
-          slideHtml += '<div class="audio-player">';
-          slideHtml += '<span class="audio-icon">🎧</span>';
-          slideHtml += '<audio controls preload="metadata">';
-          slideHtml += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
-          slideHtml += 'Tu navegador no soporta el elemento de audio.';
-          slideHtml += '</audio>';
-          slideHtml += '</div>';
-        }
+        slideHtml += renderAudioPlayer(content, slide);
         
         // Header del quiz
         slideHtml += '<div class="container">';
@@ -855,16 +892,7 @@
         slideHtml += '<div class="slide-content p-8 bg-white">';
         
         // Audio player
-        if (content?.audioSrc || slide.audioSrc) {
-          var audioSrc = content?.audioSrc || slide.audioSrc;
-          slideHtml += '<div class="audio-player">';
-          slideHtml += '<span class="audio-icon">🎧</span>';
-          slideHtml += '<audio controls preload="metadata">';
-          slideHtml += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
-          slideHtml += 'Tu navegador no soporta el elemento de audio.';
-          slideHtml += '</audio>';
-          slideHtml += '</div>';
-        }
+        slideHtml += renderAudioPlayer(content, slide);
         
         if (slide.title) {
           slideHtml += '<h1 class="text-3xl font-bold mb-6">' + escapeHtml(slide.title) + '</h1>';
@@ -959,16 +987,7 @@
         slideHtml += '<div class="slide-content p-8 bg-white">';
         
         // Audio player
-        if (content?.audioSrc || slide.audioSrc) {
-          var audioSrc = content?.audioSrc || slide.audioSrc;
-          slideHtml += '<div class="audio-player">';
-          slideHtml += '<span class="audio-icon">🎧</span>';
-          slideHtml += '<audio controls preload="metadata">';
-          slideHtml += '<source src="' + escapeHtml(audioSrc) + '" type="audio/mpeg">';
-          slideHtml += 'Tu navegador no soporta el elemento de audio.';
-          slideHtml += '</audio>';
-          slideHtml += '</div>';
-        }
+        slideHtml += renderAudioPlayer(content, slide);
         
         slideHtml += '<div class="container">';
         slideHtml += '<div class="row justify-content-center">';
