@@ -10,6 +10,73 @@
   let quizAnswers = {}; // Guardar respuestas de quiz { slideId: { answered: true, correct: true, selectedIndex: 0 } }
   let currentSlideIndex = 0;
   
+  // ===== FULLSCREEN FUNCTIONALITY =====
+  function initFullscreenButton() {
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    if (!fullscreenBtn) return;
+    
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+    
+    // Escuchar cambios en el estado de fullscreen
+    document.addEventListener('fullscreenchange', updateFullscreenIcon);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
+    document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
+    document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
+  }
+  
+  function toggleFullscreen() {
+    const elem = document.documentElement;
+    
+    if (!document.fullscreenElement && 
+        !document.webkitFullscreenElement && 
+        !document.mozFullScreenElement && 
+        !document.msFullscreenElement) {
+      // Entrar en fullscreen
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    } else {
+      // Salir de fullscreen
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  }
+  
+  function updateFullscreenIcon() {
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    if (!fullscreenBtn) return;
+    
+    const icon = fullscreenBtn.querySelector('i');
+    if (!icon) return;
+    
+    if (document.fullscreenElement || 
+        document.webkitFullscreenElement || 
+        document.mozFullScreenElement || 
+        document.msFullscreenElement) {
+      // En modo fullscreen - mostrar icono de salir
+      icon.className = 'bi bi-fullscreen-exit';
+      fullscreenBtn.title = 'Salir de pantalla completa';
+    } else {
+      // En modo normal - mostrar icono de entrar
+      icon.className = 'bi bi-arrows-fullscreen';
+      fullscreenBtn.title = 'Pantalla completa';
+    }
+  }
+  // ===== FIN FULLSCREEN FUNCTIONALITY =====
+  
   // SCORM API integration - SCORM 1.2 specific
   let scormAPI = null;
   let scormInitialized = false;
@@ -469,6 +536,9 @@
     
     // Cargar interacciones guardadas
     loadInteractions();
+    
+    // Inicializar botón de fullscreen
+    initFullscreenButton();
     
     const contentDiv = document.getElementById('course-content');
     if (!contentDiv) return;
