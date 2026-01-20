@@ -86,7 +86,7 @@
 
         // Variable para rastrear el índice actual de slides
         let currentIndex = 0;
-        let totalSlidesCount = 13; // Actualizar según el número total de slides
+        let totalSlidesCount = 0; // Se inicializará después de cargar courseData.json
         let isNavigating = false;
 
         // Funciones helper para SCORM
@@ -355,6 +355,12 @@
             if (!dataLoaded) {
                 console.error('No se pudo cargar courseData.json. El curso no funcionará correctamente.');
                 return;
+            }
+
+            // Establecer el total de slides desde los datos cargados
+            if (courseDataStructure.courseData && courseDataStructure.courseData.slides) {
+                totalSlidesCount = courseDataStructure.courseData.slides.length;
+                console.log('📊 Total de slides cargadas:', totalSlidesCount);
             }
 
             // Esperar a que course.js cargue
