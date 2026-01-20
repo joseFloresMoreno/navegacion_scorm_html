@@ -530,6 +530,12 @@
     const data = courseData.courseData;
     console.log('📚 [SCORM 1.2] Loading course:', data.name);
     
+    // Update course title in header
+    const courseTitleElement = document.getElementById('course-title');
+    if (courseTitleElement && data.name) {
+      courseTitleElement.textContent = data.name;
+    }
+    
     // SCORM 1.2 tracking - set initial status
     setValue('cmi.core.lesson_status', 'incomplete');
     commit();
@@ -592,6 +598,10 @@
     } else {
       currentSlideIndex = 0;
     }
+    
+    // Guardar posición inicial en SCORM
+    setValue('cmi.core.lesson_location', currentSlideIndex.toString());
+    commit();
     
     renderSlide(sortedSlides[currentSlideIndex], container, sortedSlides);
     
@@ -1526,6 +1536,9 @@
       if (courseData.courseData.navigationMode === 'slides' && allSlides.length > 0) {
         if (currentSlideIndex < allSlides.length - 1) {
           currentSlideIndex++;
+          // Guardar posición actual en SCORM
+          setValue('cmi.core.lesson_location', currentSlideIndex.toString());
+          commit();
           var container = document.getElementById('course-content');
           if (container) {
             renderSlide(allSlides[currentSlideIndex], container, allSlides);
@@ -1539,6 +1552,9 @@
       if (courseData.courseData.navigationMode === 'slides' && allSlides.length > 0) {
         if (currentSlideIndex > 0) {
           currentSlideIndex--;
+          // Guardar posición actual en SCORM
+          setValue('cmi.core.lesson_location', currentSlideIndex.toString());
+          commit();
           var container = document.getElementById('course-content');
           if (container) {
             renderSlide(allSlides[currentSlideIndex], container, allSlides);
@@ -1552,6 +1568,9 @@
       if (courseData.courseData.navigationMode === 'slides' && allSlides.length > 0) {
         if (index >= 0 && index < allSlides.length) {
           currentSlideIndex = index;
+          // Guardar posición actual en SCORM
+          setValue('cmi.core.lesson_location', currentSlideIndex.toString());
+          commit();
           var container = document.getElementById('course-content');
           if (container) {
             renderSlide(allSlides[currentSlideIndex], container, allSlides);
