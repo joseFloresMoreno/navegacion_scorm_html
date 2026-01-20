@@ -983,3 +983,274 @@ button {
         padding: 1rem;
     }
 }
+
+/* ====================================
+   DRAG & DROP - MOBILE FIRST
+   ==================================== */
+
+/* Contenedor de objetivo único */
+.dragdrop-objective-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+}
+
+/* Header del objetivo con icono */
+.dragdrop-objective-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
+}
+
+.objective-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.objective-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* Zona de drop única (altura reducida) */
+.drop-zone {
+    min-height: 120px;
+    padding: 1rem;
+    background: white;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    border: 3px dashed #cbd5e0;
+    border-radius: 8px;
+}
+
+.drop-zone:active {
+    background: #f0f4ff;
+    border-color: var(--color-primary);
+}
+
+.drop-zone-hover {
+    background: #e8f3f8 !important;
+    border: 2px dashed var(--color-primary) !important;
+}
+
+/* Placeholder cuando la zona está vacía */
+.drop-zone-placeholder {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    font-style: italic;
+    text-align: center;
+    padding: 1.5rem 0.5rem;
+    pointer-events: none;
+}
+
+.drop-zone .drop-items:not(:empty) + .drop-zone-placeholder {
+    display: none;
+}
+
+/* Contenedor de items asignados a una categoría */
+.drop-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 40px;
+}
+
+/* Grid de items disponibles (compacto, sin título) */
+.dragdrop-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.625rem;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+/* Items arrastrables (más pequeños) */
+.draggable-item {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    min-height: 44px;
+}
+
+.draggable-item:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(107, 163, 186, 0.2);
+    transform: translateY(-2px);
+}
+
+.draggable-item:active {
+    transform: scale(0.98);
+}
+
+/* Item seleccionado (para mobile tap) */
+.draggable-item.item-selected {
+    background: linear-gradient(135deg, #e8f3f8 0%, #d4e9f0 100%);
+    border-color: var(--color-primary);
+    border-width: 3px;
+    box-shadow: 0 4px 12px rgba(107, 163, 186, 0.3);
+    animation: pulse-selection 1s ease-in-out infinite;
+}
+
+@keyframes pulse-selection {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(107, 163, 186, 0.3);
+    }
+    50% {
+        box-shadow: 0 6px 16px rgba(107, 163, 186, 0.5);
+    }
+}
+
+.draggable-item-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    display: block;
+}
+
+/* Estados de validación */
+.draggable-item.border-green-500 {
+    border-color: #22c55e !important;
+    background: #dcfce7 !important;
+}
+
+.draggable-item.border-red-500 {
+    border-color: #ef4444 !important;
+    background: #fee2e2 !important;
+}
+
+/* Deshabilitar drag después de verificar */
+.draggable-item[draggable="false"] {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.draggable-item[draggable="false"]:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ====================================
+   DRAG & DROP - RESPONSIVE (Desktop)
+   ==================================== */
+
+/* En pantallas medianas y grandes */
+@media (min-width: 769px) {
+    .drop-zone {
+        min-height: 140px;
+        padding: 1.25rem;
+    }
+    
+    .dragdrop-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .draggable-item {
+        min-width: auto;
+        padding: 0.875rem 1rem;
+    }
+    
+    /* En desktop, el cursor muestra que se puede arrastrar */
+    .draggable-item[draggable="true"] {
+        cursor: move;
+    }
+    
+    .objective-title {
+        font-size: 1.05rem;
+    }
+}
+
+/* En pantallas muy grandes */
+@media (min-width: 1200px) {
+    .drop-zone {
+        min-height: 160px;
+        padding: 1.5rem;
+    }
+    
+    .dragdrop-objective-header {
+        padding: 0.875rem 1.25rem;
+    }
+    
+    .objective-icon {
+        font-size: 1.75rem;
+    }
+    
+    .dragdrop-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* ====================================
+   DRAG & DROP - TOUCH OPTIMIZATIONS
+   ==================================== */
+
+/* Mejorar área táctil en móvil */
+@media (max-width: 768px) {
+    .draggable-item {
+        min-height: 44px;
+        padding: 0.75rem 0.875rem;
+        font-size: 0.875rem;
+    }
+    
+    .drop-zone {
+        min-height: 100px;
+        padding: 0.875rem;
+    }
+    
+    .dragdrop-objective-header {
+        padding: 0.75rem;
+    }
+    
+    .objective-icon {
+        font-size: 1.25rem;
+    }
+    
+    .objective-title {
+        font-size: 0.9rem;
+    }
+    
+    .dragdrop-items-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    /* Prevenir scroll accidental durante interacción */
+    .draggable-item.item-selected {
+        position: relative;
+        z-index: 100;
+    }
+}
+
+/* Soporte para dispositivos con hover limitado (touch) */
+@media (hover: none) and (pointer: coarse) {
+    .draggable-item:hover {
+        transform: none;
+    }
+    
+    .draggable-item:active {
+        transform: scale(0.97);
+        background: #f0f4ff;
+    }
+    
+    .drop-zone:hover {
+        background: white;
+    }
+}

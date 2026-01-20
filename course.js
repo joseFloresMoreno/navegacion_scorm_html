@@ -965,48 +965,51 @@
         slideHtml += renderAudioPlayer(content, slide);
         
         if (slide.title) {
-          slideHtml += '<h1 class="text-3xl font-bold mb-6">' + escapeHtml(slide.title) + '</h1>';
+          slideHtml += '<h1 class="text-3xl font-bold mb-4">' + escapeHtml(slide.title) + '</h1>';
         }
         
         // Pregunta/instrucción
         if (content?.question) {
-          slideHtml += '<div class="mb-6">';
-          slideHtml += '<p class="text-lg text-gray-700">' + escapeHtml(content.question) + '</p>';
+          slideHtml += '<div class="mb-3">';
+          slideHtml += '<p class="text-md text-gray-700 font-semibold">' + escapeHtml(content.question) + '</p>';
           slideHtml += '</div>';
         }
         
         var items = content?.items || [];
-        var categories = content?.categories || [];
+        var objective = content?.objective || 'Zona de respuesta';
         var dragDropId = 'dragdrop-' + slide.id;
         
-        // Área de items arrastrables
-        slideHtml += '<div class="mb-6">';
-        slideHtml += '<h3 class="text-lg font-semibold mb-3">Elementos:</h3>';
-        slideHtml += '<div id="items-container-' + slide.id + '" class="flex flex-wrap gap-3 p-4 bg-gray-50 rounded-lg min-h-24">';
+        // ITEMS DISPONIBLES ARRIBA (Grid compacto)
+        slideHtml += '<div class="mb-3">';
+        slideHtml += '<div id="items-container-' + slide.id + '" class="dragdrop-items-grid">';
         items.forEach(function(item) {
-          slideHtml += '<div class="draggable-item bg-white border-2 border-gray-300 rounded-lg px-4 py-2 cursor-move hover:shadow-md transition-shadow" ';
+          slideHtml += '<div class="draggable-item" ';
           slideHtml += 'draggable="true" ';
           slideHtml += 'data-id="' + escapeHtml(item.id) + '" ';
-          slideHtml += 'data-category="' + escapeHtml(item.category) + '" ';
+          slideHtml += 'data-correct="' + (item.correct ? 'true' : 'false') + '" ';
           slideHtml += 'ondragstart="CourseApp.handleDragStart(event)" ';
-          slideHtml += 'ondragend="CourseApp.handleDragEnd(event)">';
-          slideHtml += '<span class="font-medium text-gray-800">' + escapeHtml(item.text) + '</span>';
+          slideHtml += 'ondragend="CourseApp.handleDragEnd(event)" ';
+          slideHtml += 'onclick="CourseApp.handleItemClick(event, \'' + item.id + '\', \'' + slide.id + '\')">';
+          slideHtml += '<span class="draggable-item-text">' + escapeHtml(item.text) + '</span>';
           slideHtml += '</div>';
         });
         slideHtml += '</div></div>';
         
-        // Categorías (drop zones)
-        slideHtml += '<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">';
-        categories.forEach(function(category) {
-          slideHtml += '<div class="drop-zone border-2 border-dashed border-gray-400 rounded-lg p-4 min-h-48 bg-gray-50" ';
-          slideHtml += 'data-category="' + escapeHtml(category.id) + '" ';
-          slideHtml += 'ondragover="CourseApp.handleDragOver(event)" ';
-          slideHtml += 'ondragleave="CourseApp.handleDragLeave(event)" ';
-          slideHtml += 'ondrop="CourseApp.handleDrop(event, \'' + slide.id + '\')">';
-          slideHtml += '<h4 class="font-bold text-center mb-3 text-gray-700">' + escapeHtml(category.label) + '</h4>';
-          slideHtml += '<div class="drop-items space-y-2"></div>';
-          slideHtml += '</div>';
-        });
+        // GRAN CAJA RECEPTORA ABAJO
+        slideHtml += '<div class="dragdrop-objective-container mb-3">';
+        slideHtml += '<div class="dragdrop-objective-header">';
+        slideHtml += '<span class="objective-icon">🎯</span>';
+        slideHtml += '<h4 class="objective-title">' + escapeHtml(objective) + '</h4>';
+        slideHtml += '</div>';
+        slideHtml += '<div class="drop-zone" ';
+        slideHtml += 'id="drop-zone-' + slide.id + '" ';
+        slideHtml += 'ondragover="CourseApp.handleDragOver(event)" ';
+        slideHtml += 'ondragleave="CourseApp.handleDragLeave(event)" ';
+        slideHtml += 'ondrop="CourseApp.handleDrop(event, \'' + slide.id + '\')" ';
+        slideHtml += 'onclick="CourseApp.handleDropZoneClick(event, \'' + slide.id + '\')">';
+        slideHtml += '<div class="drop-items" id="drop-items-' + slide.id + '"></div>';
+        slideHtml += '<div class="drop-zone-placeholder">Arrastra o selecciona aquí</div>';
+        slideHtml += '</div>';
         slideHtml += '</div>';
         
         // Botón verificar
@@ -1739,6 +1742,7 @@
     
     // Drag & Drop functions
     draggedElement: null,
+    selectedItem: null,
     
     handleDragStart: function(event) {
       this.draggedElement = event.target;
@@ -1760,7 +1764,7 @@
       // Resaltar zona de drop
       var dropZone = event.currentTarget;
       if (dropZone.classList.contains('drop-zone')) {
-        dropZone.classList.add('bg-blue-100', 'border-blue-500');
+        dropZone.classList.add('drop-zone-hover');
       }
       
       return false;
@@ -1769,7 +1773,7 @@
     handleDragLeave: function(event) {
       var dropZone = event.currentTarget;
       if (dropZone.classList.contains('drop-zone')) {
-        dropZone.classList.remove('bg-blue-100', 'border-blue-500');
+        dropZone.classList.remove('drop-zone-hover');
       }
     },
     
@@ -1779,17 +1783,74 @@
       }
       
       var dropZone = event.currentTarget;
-      dropZone.classList.remove('bg-blue-100', 'border-blue-500');
+      dropZone.classList.remove('drop-zone-hover');
       
       if (this.draggedElement) {
         // Mover el elemento a la zona de drop
         var dropItems = dropZone.querySelector('.drop-items');
         if (dropItems) {
           dropItems.appendChild(this.draggedElement);
+          this.draggedElement.classList.remove('item-selected');
+          
+          // Ocultar placeholder
+          var placeholder = dropZone.querySelector('.drop-zone-placeholder');
+          if (placeholder) {
+            placeholder.style.display = 'none';
+          }
         }
       }
       
       return false;
+    },
+    
+    // Nuevos handlers para click/tap (mobile-first)
+    handleItemClick: function(event, itemId, slideId) {
+      var item = event.currentTarget;
+      
+      // Si el item ya está asignado a una categoría, no hacer nada
+      if (item.closest('.drop-zone')) {
+        return;
+      }
+      
+      // Remover selección previa
+      var allItems = document.querySelectorAll('.draggable-item');
+      allItems.forEach(function(el) {
+        el.classList.remove('item-selected');
+      });
+      
+      // Seleccionar este item
+      item.classList.add('item-selected');
+      this.selectedItem = item;
+    },
+    
+    handleDropZoneClick: function(event, slideId) {
+      // Si no hay item seleccionado, no hacer nada
+      if (!this.selectedItem) {
+        return;
+      }
+      
+      // Prevenir que se active si se hace click en un item dentro de la zona
+      if (event.target.classList.contains('draggable-item') || 
+          event.target.closest('.draggable-item')) {
+        return;
+      }
+      
+      var dropZone = document.getElementById('drop-zone-' + slideId);
+      var dropItems = document.getElementById('drop-items-' + slideId);
+      
+      if (dropItems && this.selectedItem) {
+        // Mover el item a la zona objetivo
+        dropItems.appendChild(this.selectedItem);
+        this.selectedItem.classList.remove('item-selected');
+        
+        // Ocultar placeholder
+        var placeholder = dropZone.querySelector('.drop-zone-placeholder');
+        if (placeholder) {
+          placeholder.style.display = 'none';
+        }
+        
+        this.selectedItem = null;
+      }
     },
     
     checkDragDropAnswer: function(slideId) {
@@ -1797,26 +1858,43 @@
       if (!slide || !slide.content) return;
       
       var items = slide.content.items || [];
-      var allCorrect = true;
+      var requiredCount = slide.content.requiredCount || 3;
+      var dropZone = document.getElementById('drop-items-' + slideId);
+      var itemsInDropZone = dropZone ? dropZone.querySelectorAll('.draggable-item') : [];
       
-      // Verificar cada item
-      items.forEach(function(item) {
-        var element = document.querySelector('[data-id="' + item.id + '"]');
-        if (element) {
-          var dropZone = element.closest('.drop-zone');
-          var actualCategory = dropZone ? dropZone.getAttribute('data-category') : null;
-          var expectedCategory = item.category;
-          
-          // Marcar visualmente
-          element.classList.remove('border-green-500', 'border-red-500', 'bg-green-50', 'bg-red-50');
-          if (actualCategory === expectedCategory) {
+      var allCorrect = true;
+      var correctCount = 0;
+      var incorrectCount = 0;
+      
+      // Verificar items en la caja
+      itemsInDropZone.forEach(function(element) {
+        var isCorrect = element.getAttribute('data-correct') === 'true';
+        element.classList.remove('border-green-500', 'border-red-500', 'bg-green-50', 'bg-red-50');
+        
+        if (isCorrect) {
+          correctCount++;
+        } else {
+          incorrectCount++;
+          allCorrect = false;
+        }
+      });
+      
+      // Verificar que tenga exactamente el número requerido y todos correctos
+      if (itemsInDropZone.length !== requiredCount || incorrectCount > 0 || correctCount !== requiredCount) {
+        allCorrect = false;
+      }
+      
+      // Marcar visualmente
+      itemsInDropZone.forEach(function(element) {
+        var isCorrect = element.getAttribute('data-correct') === 'true';
+        if (allCorrect) {
+          element.classList.add('border-green-500', 'bg-green-50');
+        } else {
+          if (isCorrect) {
             element.classList.add('border-green-500', 'bg-green-50');
           } else {
             element.classList.add('border-red-500', 'bg-red-50');
-            allCorrect = false;
           }
-        } else {
-          allCorrect = false;
         }
       });
       
@@ -1890,6 +1968,7 @@
             var slide = allSlides.find(function(s) { return s.id === slideId; });
             if (slide && slide.content && slide.content.items) {
               var itemsContainer = document.getElementById('items-container-' + slideId);
+              var dropZone = document.getElementById('drop-zone-' + slideId);
               if (itemsContainer) {
                 slide.content.items.forEach(function(item) {
                   var element = document.querySelector('[data-id="' + item.id + '"]');
@@ -1900,6 +1979,14 @@
                     itemsContainer.appendChild(element);
                   }
                 });
+                
+                // Mostrar el placeholder de nuevo
+                if (dropZone) {
+                  var placeholder = dropZone.querySelector('.drop-zone-placeholder');
+                  if (placeholder) {
+                    placeholder.style.display = 'block';
+                  }
+                }
               }
             }
             

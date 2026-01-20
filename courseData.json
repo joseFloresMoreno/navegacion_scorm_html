@@ -112,69 +112,42 @@
         "id": "slide-5",
         "order": 5,
         "type": "dragdrop",
-        "title": "Actividad: Categoriza las Intervenciones",
+        "title": "Actividad: Principios de Cuidados Paliativos",
         "audioSrc": "audios/audio_5.mp3",
         "content": {
-          "question": "Arrastra cada intervención a la categoría de síntoma correspondiente",
+          "question": "Arrastra los 3 principios fundamentales de cuidados paliativos",
+          "objective": "Principios Fundamentales",
+          "requiredCount": 3,
           "items": [
             {
               "id": "item-1",
-              "text": "Analgésicos potentes (morfina)",
-              "category": "dolor"
+              "text": "Alivio del dolor",
+              "correct": true
             },
             {
               "id": "item-2",
-              "text": "Oxígeno suplementario",
-              "category": "disnea"
+              "text": "Curar la enfermedad",
+              "correct": false
             },
             {
               "id": "item-3",
-              "text": "Medicamentos antináuseas",
-              "category": "nauseas"
+              "text": "Mejorar calidad de vida",
+              "correct": true
             },
             {
               "id": "item-4",
-              "text": "Preguntar nivel de dolor del 1 al 10",
-              "category": "dolor"
+              "text": "Prolongar vida sin límites",
+              "correct": false
             },
             {
               "id": "item-5",
-              "text": "Elevar cabecera de la cama",
-              "category": "disnea"
-            },
-            {
-              "id": "item-6",
-              "text": "Comidas pequeñas y frecuentes",
-              "category": "nauseas"
-            },
-            {
-              "id": "item-7",
-              "text": "Estimulación eléctrica suave",
-              "category": "dolor"
-            },
-            {
-              "id": "item-8",
-              "text": "Ejercicios de respiración",
-              "category": "disnea"
+              "text": "Apoyo integral al paciente",
+              "correct": true
             }
           ],
-          "categories": [
-            {
-              "id": "dolor",
-              "label": "Control del Dolor"
-            },
-            {
-              "id": "disnea",
-              "label": "Manejo de Disnea"
-            },
-            {
-              "id": "nauseas",
-              "label": "Náuseas y Vómitos"
-            }
-          ],
-          "explanation": "Control del Dolor: analgésicos potentes, evaluación numérica del dolor, estimulación eléctrica. Manejo de Disnea: oxígeno, posición elevada, ejercicios de respiración. Náuseas y Vómitos: medicamentos antináuseas, comidas pequeñas.",
-          "feedbackCorrect": "¡Excelente! Has categorizado correctamente todas las intervenciones según el síntoma que atienden.",
-          "feedbackIncorrect": "Algunas intervenciones no están en la categoría correcta. Revisa qué síntoma trata cada una."
+          "explanation": "Los 3 principios fundamentales son: Alivio del dolor, Mejorar calidad de vida, y Apoyo integral al paciente. Los cuidados paliativos NO buscan curar ni prolongar la vida sin límites.",
+          "feedbackCorrect": "¡Perfecto! Has identificado los 3 principios fundamentales correctamente.",
+          "feedbackIncorrect": "Revisa tu selección. Debes elegir exactamente 3 principios correctos."
         }
       },
       {
