@@ -11,41 +11,43 @@
    ==================================== */
 :root {
     /* Colores principales del curso - Tonos Pasteles Oscuros */
-    --color-primary: #6ba3ba;
-    --color-primary-dark: #5a8fa3;
-    --color-secondary: #d9c6a8;
-    --color-accent: #8fb37d;
+    --color-primary: #436AB1;
+    --color-primary-dark: #141B59;
+    --color-secondary: #49BEA6;
+    --color-accent: #F7C146;
+    /* Colores de acento adicionales */
+    --color-accent-alt: #F171AB;
     
     /* Colores de fondo */
-    --bg-gradient-start: #c5dce3;
-    --bg-gradient-end: #b0ccd6;
-    --bg-body: linear-gradient(135deg, #c5dce3 0%, #b0ccd6 100%);
+    --bg-gradient-start: #e6ecf7;
+    --bg-gradient-end: #dbe6f6;
+    --bg-body: linear-gradient(135deg, #e6ecf7 0%, #dbe6f6 100%);
     
     /* Colores de texto */
-    --text-primary: #2d3748;
-    --text-secondary: #4a5568;
-    --text-muted: #718096;
+    --text-primary: #141B59;
+    --text-secondary: #436AB1;
+    --text-muted: #6c757d;
     --text-white: #ffffff;
-    --header-title-color: #1a202c;
+    --header-title-color: #141B59;
     
     /* Colores de progress dots */
-    --progress-dot-default: rgba(26, 32, 44, 0.35);
-    --progress-dot-active: #1a202c;
-    --progress-dot-completed: rgba(26, 32, 44, 0.65);
+    --progress-dot-default: rgba(67, 106, 177, 0.25);
+    --progress-dot-active: #436AB1;
+    --progress-dot-completed: #49BEA6;
     
     /* Visibilidad de progress dots (flex = visible, none = oculto) */
     --progress-dots-display-desktop: none;
     --progress-dots-display-mobile: none;
     
     /* Colores de botones */
-    --btn-primary-bg: linear-gradient(135deg, #6ba3ba 0%, #5a8fa3 100%);
-    --btn-primary-hover-shadow: rgba(107, 163, 186, 0.5);
-    --btn-secondary-bg: #d9c6a8;
-    --btn-secondary-hover: #cbb592;
-    --btn-finish-bg: linear-gradient(135deg, #8fb37d 0%, #7a9d6b 100%);
+    --btn-primary-bg: linear-gradient(135deg, #436AB1 0%, #141B59 100%);
+    --btn-primary-hover-shadow: rgba(67, 106, 177, 0.3);
+    --btn-secondary-bg: #49BEA6;
+    --btn-secondary-hover: #3ea18c;
+    --btn-finish-bg: linear-gradient(135deg, #F7C146 0%, #F171AB 100%);
     
     /* Colores de titulos h2,h3 y h4 */
-    --slide-title-color: #5a8fa3;
+    --slide-title-color: #436AB1;
     
     /* Otros colores */
     --border-color: #e2e8f0;
@@ -759,15 +761,15 @@ button {
 
 /* Audio Player */
 .audio-player {
-    background: linear-gradient(135deg, #e8f4f8 0%, #d4e9f0 100%);
-    border: 3px solid var(--color-primary);
+    background: linear-gradient(135deg, rgba(247, 250, 252, 0.95) 0%, rgba(240, 245, 248, 0.95) 100%);
+    border: 2px solid var(--color-secondary);
     border-radius: 16px;
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    box-shadow: 0 8px 24px rgba(107, 163, 186, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(73, 190, 166, 0.15), 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -780,13 +782,14 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(107, 163, 186, 0.1) 0%, rgba(107, 163, 186, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(73, 190, 166, 0.08) 0%, rgba(73, 190, 166, 0.03) 100%);
     pointer-events: none;
 }
 
 .audio-player:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(107, 163, 186, 0.4), 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 30px rgba(73, 190, 166, 0.25), 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
 }
 
 .audio-player audio {

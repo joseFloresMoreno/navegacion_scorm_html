@@ -1067,64 +1067,49 @@
         break;
         
       case 'infoCards':
-        slideHtml += '<div class="slide-content p-8 bg-white">';
+        slideHtml += '<div class="slide-content">';
         
         // Audio player
         slideHtml += renderAudioPlayer(content, slide);
         
-        slideHtml += '<div class="container">';
-        slideHtml += '<div class="row justify-content-center">';
-        slideHtml += '<div class="col-lg-10">';
-        
-        if (slide.title) {
-          slideHtml += '<h2 class="mb-3" style="color: var(--slide-title-color);">' + escapeHtml(slide.title) + '</h2>';
-        }
-        
-        if (content?.description) {
-          var descriptionContent = slide.convertedHtml && content.convertedDescription 
-            ? content.convertedDescription 
-            : escapeHtml(content.description);
-          var highlightContent = content.description_highlight 
-            ? (slide.convertedHtml && content.convertedDescriptionHighlight 
-                ? content.convertedDescriptionHighlight 
-                : '<b>' + escapeHtml(content.description_highlight) + '</b>')
-            : '';
-          slideHtml += '<p class="text-md mb-4" style="color: #4a5568;">' + descriptionContent + ' ' + highlightContent + '</p>';
+        // Renderizar convertedDescription si existe
+        if (content?.convertedDescription) {
+          slideHtml += content.convertedDescription;
         }
         
         var cards = content?.cards || [];
         
         // Grid de tarjetas
-        slideHtml += '<div class="row g-4 mb-4">';
+        slideHtml += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">';
         cards.forEach(function(card, index) {
           var cardId = 'card-' + slide.id + '-' + index;
           var bgColor = card.bgColor || '#e8f3f8';
           var iconColor = card.iconColor || '#7fb3c4';
           
-          slideHtml += '<div class="col-md-6 col-lg-4">';
-          slideHtml += '<div class="info-card-item h-100 p-4 rounded-3 cursor-pointer transition-all" ';
-          slideHtml += 'style="background: ' + bgColor + ';" ';
-          slideHtml += 'onclick="CourseApp.openInfoCardModal(\'' + slide.id + '\', ' + index + ')">';
+          slideHtml += '<div style="background: ' + bgColor + '; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); cursor: pointer; transition: all 0.3s ease;" ';
+          slideHtml += 'onclick="CourseApp.openInfoCardModal(\'' + slide.id + '\', ' + index + ')" ';
+          slideHtml += 'onmouseover="this.style.transform=\'translateY(-5px)\'; this.style.boxShadow=\'0 8px 30px rgba(0, 0, 0, 0.12)\';" ';
+          slideHtml += 'onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 20px rgba(0, 0, 0, 0.08)\';">';
           
           if (card.icon) {
-            slideHtml += '<div class="text-center mb-3" style="font-size: 3rem;">' + escapeHtml(card.icon) + '</div>';
+            slideHtml += '<div style="text-align: center; margin-bottom: 1rem; font-size: 3rem;">' + escapeHtml(card.icon) + '</div>';
           }
           
-          slideHtml += '<h4 class="text-center mb-2" style="color: ' + iconColor + ';">' + escapeHtml(card.title) + '</h4>';
+          slideHtml += '<h4 style="text-align: center; margin-bottom: 0.5rem; color: ' + iconColor + '; font-size: 1.3rem; font-weight: 700;">' + escapeHtml(card.title) + '</h4>';
           
           if (card.subtitle) {
-            slideHtml += '<p class="text-sm text-center mb-0" style="color: #718096;">' + escapeHtml(card.subtitle) + '</p>';
+            slideHtml += '<p style="text-align: center; margin: 0; color: #718096; font-size: 0.95rem;">' + escapeHtml(card.subtitle) + '</p>';
           }
           
-          slideHtml += '<div class="text-center mt-3">';
-          slideHtml += '<i class="bi bi-info-circle" style="color: ' + iconColor + '; font-size: 1.2rem;"></i>';
+          slideHtml += '<div style="text-align: center; margin-top: 1rem;">';
+          slideHtml += '<span style="color: ' + iconColor + '; font-size: 1.2rem;">ℹ️</span>';
           slideHtml += '</div>';
           
-          slideHtml += '</div></div>';
+          slideHtml += '</div>';
         });
         slideHtml += '</div>';
         
-        slideHtml += '</div></div></div></div>'; // Cierre columnas y container
+        slideHtml += '</div>'; // Cierre slide-content
         
         // Modales para cada tarjeta
         cards.forEach(function(card, index) {
