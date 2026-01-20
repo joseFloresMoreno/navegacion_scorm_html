@@ -646,7 +646,7 @@
     visitedSlides.add(slide.id);
     
     // If slide has pre-converted HTML, use it directly
-    if (slide.convertedHtml) {
+    if (slide.convertedHtml && typeof slide.convertedHtml === 'string') {
       var slideHtml = '<div class="slide-container w-full min-h-screen relative overflow-hidden">';
       
       // Inject audio player at the beginning of the content if audioSrc exists
@@ -1071,7 +1071,15 @@
         }
         
         if (content?.description) {
-          slideHtml += '<p class="text-md mb-4" style="color: #4a5568;">' + escapeHtml(content.description) + ' ' + '<b>' + escapeHtml(content.description_highlight || '') + '</b></p>';
+          var descriptionContent = slide.convertedHtml && content.convertedDescription 
+            ? content.convertedDescription 
+            : escapeHtml(content.description);
+          var highlightContent = content.description_highlight 
+            ? (slide.convertedHtml && content.convertedDescriptionHighlight 
+                ? content.convertedDescriptionHighlight 
+                : '<b>' + escapeHtml(content.description_highlight) + '</b>')
+            : '';
+          slideHtml += '<p class="text-md mb-4" style="color: #4a5568;">' + descriptionContent + ' ' + highlightContent + '</p>';
         }
         
         var cards = content?.cards || [];

@@ -53,9 +53,12 @@
         "type": "infoCards",
         "title": "Áreas de Apoyo Familiar",
         "audioSrc": "audios/audio_4.mp3",
+        "convertedHtml": true,
         "content": {
           "description": "Explora las diferentes áreas de apoyo que se ofrecen a las familias en cuidados paliativos.",
           "description_highlight": "Haz clic en cada tarjeta para obtener más información detallada.",
+          "convertedDescription": "Explora las <strong>diferentes áreas de apoyo</strong> que se ofrecen a las familias en cuidados paliativos.",
+          "convertedDescriptionHighlight": "<strong style=\"color: var(--slide-title-color);\">Haz clic en cada tarjeta para obtener más información detallada.</strong>",
           "cards": [
             {
               "icon": "📚",
