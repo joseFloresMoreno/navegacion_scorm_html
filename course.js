@@ -536,6 +536,14 @@
       courseTitleElement.textContent = data.name;
     }
     
+    // Update course logo if provided
+    const logoContainer = document.getElementById('course-logo-container');
+    const logoElement = document.getElementById('course-logo');
+    if (logoContainer && logoElement && data.logo) {
+      logoElement.src = data.logo;
+      logoContainer.style.display = 'block';
+    }
+    
     // SCORM 1.2 tracking - set initial status
     setValue('cmi.core.lesson_status', 'incomplete');
     commit();
