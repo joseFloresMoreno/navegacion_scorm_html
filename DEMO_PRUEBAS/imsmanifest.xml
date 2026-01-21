@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE manifest PUBLIC "-//ADL//DTD SCORM 1.2//EN" "http://www.adlnet.org/scorm/scormcp1p2.dtd">
+<manifest identifier="695e76ce5c864b8edd62c92b" version="1.0"
+          xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2">
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1">
+      <general>
+        <title>
+          <langstring xml:lang="en">Manejo Integral del Sufrimiento en Cuidados Paliativos</langstring>
+        </title>
+        <description>
+          <langstring xml:lang="en">Un curso interactivo diseñado para profesionales de la salud, centrado en el modelo de &apos;Dolor Total&apos; de Cicely Saunders. Aborda las cuatro dimensiones del sufrimiento (física, psicológica, social y espiritual) mediante teoría concisa, interactividad y estudios de caso para desarrollar un plan de cuidados integral y humanizado.</langstring>
+        </description>
+      </general>
+    </lom>
+  </metadata>
+
+  <organizations default="default_org">
+    <organization identifier="default_org">
+      <title>Manejo Integral del Sufrimiento en Cuidados Paliativos</title>
+    <item identifier="course_item" identifierref="course_resource" isvisible="true">
+      <title>Manejo Integral del Sufrimiento en Cuidados Paliativos</title>
+    </item>
+    </organization>
+  </organizations>
+
+  <resources>
+  <resource identifier="course_resource" type="webcontent" href="course.html">
+    <file href="course.html"/>
+    <file href="api.js"/>
+    <file href="course.js"/>
+    <file href="course.css"/>
+  </resource>
+  </resources>
+
+</manifest>

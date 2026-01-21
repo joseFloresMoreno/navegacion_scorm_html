@@ -1,0 +1,224 @@
+{
+  "courseData": {
+    "name": "Cuidados Paliativos: Atención Integral al Paciente",
+    "navigationMode": "slides",
+    "slides": [
+      {
+        "id": "slide-0",
+        "order": 0,
+        "type": "page",
+        "title": "Introducción y Fundamentos de los Cuidados Paliativos",
+        "audioSrc": "audios/audio_0.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<div class=\"text-center mb-4\">\n<img src=\"images/image_1.jpg\" alt=\"Cuidados de salud\" class=\"img-full-large\">\n</div>\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Bienvenida al Curso</h2>\n<p class=\"text-lg\" style=\"color: #4a5568;\">Los cuidados paliativos son un enfoque de atención médica que busca mejorar la calidad de vida de los pacientes y sus familias cuando enfrentan enfermedades graves. Este curso te proporcionará los conocimientos fundamentales para comprender y aplicar los principios de los cuidados paliativos en tu práctica profesional.</p>\n<div class=\"box box-border-left mt-3 mb-4\" style=\"background: #e8f3f8; border-color: #a8d5e2;\">\n<h4 class=\"mb-1\" style=\"color: var(--slide-title-color);\">Objetivos del Curso:</h4>\n<ul class=\"line-height-relaxed\" style=\"color: #718096;\">\n<li>Comprender los principios básicos de los cuidados paliativos</li>\n<li>Identificar los síntomas comunes y su manejo</li>\n<li>Desarrollar habilidades de comunicación efectiva</li>\n<li>Conocer el rol del equipo multidisciplinario</li>\n</ul>\n</div>\n<h2 class=\"mb-3 mt-4\" style=\"color: var(--slide-title-color);\">¿Qué son los Cuidados Paliativos?</h2>\n<div class=\"desktop-text-image-layout mb-4\">\n<p class=\"text-md margin-0\" style=\"color: #4a5568;\">Los cuidados paliativos son una atención médica especializada que se centra en proporcionar alivio del dolor y otros síntomas de una enfermedad grave. El objetivo es mejorar la calidad de vida tanto del paciente como de la familia.</p>\n<img src=\"images/image_2.jpg\" alt=\"Atención médica\" class=\"img-full\">\n</div>\n<style>\n@media (min-width: 769px) {\n.desktop-text-image-layout {\nflex-direction: row !important;\nalign-items: flex-start;\ngap: 2rem !important;\n}\n.desktop-text-image-layout p {\nflex: 1;\n}\n.desktop-text-image-layout img {\nwidth: 400px !important;\nflex-shrink: 0;\n}\n}\n</style>\n<div class=\"box mb-4\" style=\"background: #fef3e2;\">\n<h4 class=\"mb-2\" style=\"color: var(--color-secondary);\">Principios Fundamentales:</h4>\n<ol class=\"line-height-loose\" style=\"color: #718096;\">\n<li><strong>Alivio del dolor y síntomas:</strong> Control efectivo del sufrimiento físico</li>\n<li><strong>Apoyo psicológico y espiritual:</strong> Atención integral a necesidades emocionales</li>\n<li><strong>Afirmación de la vida:</strong> Ver la muerte como un proceso natural</li>\n<li><strong>Enfoque en calidad de vida:</strong> Maximizar el bienestar del paciente</li>\n</ol>\n</div>\n<h3 class=\"mt-4 mb-2\" style=\"color: var(--slide-title-color);\">Trabajo en Equipo para una Atención Integral</h3>\n<p class=\"text-md mb-4\" style=\"color: #4a5568;\">Los cuidados paliativos requieren un enfoque multidisciplinario donde diversos profesionales trabajan en conjunto para atender todas las necesidades del paciente y su familia.</p>\n<div class=\"grid-auto-fit-md mb-4\">\n<div class=\"team-grid-item\" style=\"background: #e8f3f8;\">\n<h4 style=\"color: #7fb3c4;\">👨‍⚕️ Médicos</h4>\n<p class=\"text-sm\" style=\"color: #718096;\">Diagnóstico y tratamiento médico</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #fef3e2;\">\n<h4 style=\"color: #d4a373;\">👩‍⚕️ Enfermeros</h4>\n<p class=\"text-sm\" style=\"color: #718096;\">Cuidado directo y monitoreo</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #e8f3e8;\">\n<h4 style=\"color: #a0c491;\">🧠 Psicólogos</h4>\n<p class=\"text-sm\" style=\"color: #718096;\">Apoyo emocional y mental</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #f3e8f8;\">\n<h4 style=\"color: #b19cd9;\">🙏 Consejeros Espirituales</h4>\n<p class=\"text-sm\" style=\"color: #718096;\">Guía espiritual y religiosa</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #ffe8e8;\">\n<h4 style=\"color: #d99999;\">👨‍👩‍👧 Trabajadores Sociales</h4>\n<p class=\"text-sm\" style=\"color: #718096;\">Apoyo social y familiar</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #e8f8e8;\">\n<h4 style=\"color: #91c491;\">🧘 Terapeutas</h4>\n<p class=\"text-sm\" style=\"color: #718096;\">Rehabilitación física</p>\n</div>\n</div>\n</div>"
+      },
+      {
+        "id": "slide-1",
+        "order": 1,
+        "type": "quiz",
+        "title": "Evaluación: Conceptos Básicos",
+        "audioSrc": "audios/audio_1.mp3",
+        "content": {
+          "question": "¿Cuál es el objetivo principal de los cuidados paliativos?",
+          "options": [
+            "Curar la enfermedad del paciente",
+            "Prolongar la vida a cualquier costo",
+            "Mejorar la calidad de vida del paciente y su familia",
+            "Sustituir todos los tratamientos médicos"
+          ],
+          "correctAnswer": 2,
+          "explanation": "El objetivo principal de los cuidados paliativos es mejorar la calidad de vida tanto del paciente como de su familia, proporcionando alivio del dolor y otros síntomas, sin enfocarse únicamente en curar la enfermedad o prolongar la vida.",
+          "feedbackCorrect": "¡Excelente! Comprendes claramente el enfoque de los cuidados paliativos.",
+          "feedbackIncorrect": "Recuerda que los cuidados paliativos se centran en la calidad de vida, no solo en curar o prolongar la vida."
+        }
+      },
+      {
+        "id": "slide-2",
+        "order": 2,
+        "type": "page",
+        "title": "Síntomas Comunes y Comunicación Efectiva",
+        "audioSrc": "audios/audio_2.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Identificación y Tratamiento de Síntomas</h2>\n<p class=\"text-md mb-4\" style=\"color: #4a5568;\">Los pacientes en cuidados paliativos pueden experimentar diversos síntomas que requieren atención especializada:</p>\n<div class=\"grid-auto-fit-xl\" style=\"margin-bottom: 2.5rem;\">\n<div style=\"background: #fef3e2; padding: 1.5rem; border-radius: 8px;\">\n<h4 style=\"color: #d4a373; margin-bottom: 1rem;\">🤕 Dolor</h4>\n<p style=\"color: #718096; font-size: 0.95rem;\">Evaluación continua con escalas de dolor. Tratamiento farmacológico y no farmacológico.</p>\n</div>\n<div style=\"background: #e8f3f8; padding: 1.5rem; border-radius: 8px;\">\n<h4 style=\"color: #7fb3c4; margin-bottom: 1rem;\">😰 Disnea</h4>\n<p style=\"color: #718096; font-size: 0.95rem;\">Dificultad respiratoria. Oxígeno, posicionamiento, medicación ansiolítica.</p>\n</div>\n<div style=\"background: #e8f3e8; padding: 1.5rem; border-radius: 8px;\">\n<h4 style=\"color: #a0c491; margin-bottom: 1rem;\">🤢 Náuseas y Vómitos</h4>\n<p style=\"color: #718096; font-size: 0.95rem;\">Antieméticos, manejo dietético, control de causas subyacentes.</p>\n</div>\n<div style=\"background: #f3e8f8; padding: 1.5rem; border-radius: 8px;\">\n<h4 style=\"color: #b19cd9; margin-bottom: 1rem;\">😴 Fatiga</h4>\n<p style=\"color: #718096; font-size: 0.95rem;\">Conservación de energía, actividad física adaptada, manejo del sueño.</p>\n</div>\n<div style=\"background: #ffe8e8; padding: 1.5rem; border-radius: 8px;\">\n<h4 style=\"color: #d99999; margin-bottom: 1rem;\">😔 Depresión/Ansiedad</h4>\n<p style=\"color: #718096; font-size: 0.95rem;\">Apoyo psicológico, terapia, medicación cuando sea necesario.</p>\n</div>\n<div style=\"background: #e8f8f8; padding: 1.5rem; border-radius: 8px;\">\n<h4 style=\"color: #7fc4c4; margin-bottom: 1rem;\">🚫 Pérdida de Apetito</h4>\n<p style=\"color: #718096; font-size: 0.95rem;\">Comidas pequeñas frecuentes, alimentos favoritos, estimulantes del apetito.</p>\n</div>\n</div>\n<h2 class=\"mb-3 mt-4\" style=\"color: var(--slide-title-color);\">Habilidades de Comunicación Efectiva</h2>\n<div class=\"desktop-text-image-layout mb-3\">\n<p class=\"text-md margin-0\" style=\"color: #4a5568;\">La comunicación efectiva es esencial en los cuidados paliativos. Permite establecer confianza, comprender las necesidades del paciente y tomar decisiones compartidas.</p>\n<img src=\"https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=400&fit=crop\" alt=\"Comunicación médico-paciente\" class=\"img-full\">\n</div>\n<div class=\"box mb-2\" style=\"background: #e8f3f8;\">\n<h4 class=\"mb-2\" style=\"color: var(--slide-title-color);\">Principios Clave:</h4>\n<ul class=\"line-height-loose\" style=\"color: #718096;\">\n<li><strong>Escucha activa:</strong> Prestar atención completa sin interrumpir</li>\n<li><strong>Empatía:</strong> Mostrar comprensión de los sentimientos del paciente</li>\n<li><strong>Honestidad compasiva:</strong> Información veraz con sensibilidad</li>\n<li><strong>Lenguaje claro:</strong> Evitar términos médicos complejos</li>\n<li><strong>Respeto a la autonomía:</strong> Incluir al paciente en decisiones</li>\n</ul>\n</div>\n</div>"
+      },
+      {
+        "id": "slide-3",
+        "order": 3,
+        "type": "page",
+        "title": "Apoyo a la Familia",
+        "audioSrc": "audios/audio_3.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Cuidado Integral de la Familia</h2>\n<div class=\"mb-4\">\n<img src=\"https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&h=400&fit=crop\" alt=\"Familia unida\" class=\"img-full mb-3\">\n<p class=\"text-md\" style=\"color: #4a5568;\">La familia es parte integral del cuidado paliativo. Los miembros familiares a menudo asumen roles de cuidadores y necesitan apoyo emocional, educación y recursos.</p>\n</div>\n<div class=\"box\" style=\"background: #fef3e2;\">\n<h4 class=\"mb-2\" style=\"color: var(--color-secondary);\">Áreas de Apoyo Familiar:</h4>\n<div class=\"grid-auto-fit-lg\">\n<div class=\"support-grid-item\">\n<strong style=\"color: #7fb3c4;\">Educación:</strong>\n<p class=\"text-sm\" style=\"color: #718096;\">Enseñar habilidades de cuidado básico</p>\n</div>\n<div class=\"support-grid-item\">\n<strong style=\"color: #7fb3c4;\">Apoyo Emocional:</strong>\n<p class=\"text-sm\" style=\"color: #718096;\">Consejería y grupos de apoyo</p>\n</div>\n<div class=\"support-grid-item\">\n<strong style=\"color: #7fb3c4;\">Respiro:</strong>\n<p class=\"text-sm\" style=\"color: #718096;\">Tiempo de descanso para cuidadores</p>\n</div>\n<div class=\"support-grid-item\">\n<strong style=\"color: #7fb3c4;\">Duelo:</strong>\n<p class=\"text-sm\" style=\"color: #718096;\">Acompañamiento en el proceso de pérdida</p>\n</div>\n</div>\n</div>\n</div>"
+      },
+      {
+        "id": "slide-4",
+        "order": 4,
+        "type": "infoCards",
+        "title": "Áreas de Apoyo Familiar",
+        "audioSrc": "audios/audio_4.mp3",
+        "convertedHtml": true,
+        "content": {
+          "description": "Explora las diferentes áreas de apoyo que se ofrecen a las familias en cuidados paliativos.",
+          "description_highlight": "Haz clic en cada tarjeta para obtener más información detallada.",
+          "convertedDescription": "Explora las <strong>diferentes áreas de apoyo</strong> que se ofrecen a las familias en cuidados paliativos.",
+          "convertedDescriptionHighlight": "<strong style=\"color: var(--slide-title-color);\">Haz clic en cada tarjeta para obtener más información detallada.</strong>",
+          "cards": [
+            {
+              "icon": "📚",
+              "title": "Educación",
+              "subtitle": "Habilidades de cuidado",
+              "bgColor": "#e8f3f8",
+              "iconColor": "#7fb3c4",
+              "modalContent": "<h4 class=\"mb-3\" style=\"color: #7fb3c4;\">Programa de Educación para Cuidadores</h4><p style=\"color: #4a5568; margin-bottom: 1rem;\">La educación es fundamental para empoderar a los familiares en su rol de cuidadores. Nuestro programa incluye:</p><ul style=\"color: #718096; line-height: 1.8;\"><li><strong>Técnicas de cuidado básico:</strong> Aseo personal, alimentación, movilización segura del paciente</li><li><strong>Manejo de síntomas:</strong> Identificación y respuesta ante dolor, náuseas, disnea</li><li><strong>Uso de equipos médicos:</strong> Oxígeno, medicación, dispositivos de apoyo</li><li><strong>Prevención de complicaciones:</strong> Úlceras por presión, caídas, infecciones</li><li><strong>Comunicación efectiva:</strong> Cómo hablar con el paciente sobre sus necesidades</li></ul><div class=\"alert alert-info mt-3\" style=\"background: #e8f3f8; border-left: 4px solid #7fb3c4; padding: 1rem;\"><p class=\"mb-0\" style=\"color: #718096;\"><strong>💡 Importante:</strong> Se ofrecen talleres prácticos mensuales y material educativo actualizado.</p></div>"
+            },
+            {
+              "icon": "💚",
+              "title": "Apoyo Emocional",
+              "subtitle": "Consejería y grupos",
+              "bgColor": "#e8f3e8",
+              "iconColor": "#a0c491",
+              "modalContent": "<h4 class=\"mb-3\" style=\"color: #a0c491;\">Soporte Psicológico y Emocional</h4><p style=\"color: #4a5568; margin-bottom: 1rem;\">Cuidar a un ser querido puede ser emocionalmente desafiante. Ofrecemos:</p><ul style=\"color: #718096; line-height: 1.8;\"><li><strong>Consejería individual:</strong> Sesiones personalizadas con psicólogos especializados</li><li><strong>Grupos de apoyo:</strong> Espacios seguros para compartir experiencias con otros cuidadores</li><li><strong>Terapia familiar:</strong> Sesiones conjuntas para fortalecer vínculos y comunicación</li><li><strong>Manejo del estrés:</strong> Técnicas de relajación, mindfulness y autocuidado</li><li><strong>Prevención del burnout:</strong> Identificación temprana de agotamiento emocional</li></ul><div class=\"alert alert-success mt-3\" style=\"background: #e8f3e8; border-left: 4px solid #a0c491; padding: 1rem;\"><p class=\"mb-0\" style=\"color: #718096;\"><strong>🌱 Recuerda:</strong> Cuidar tu salud mental te permite cuidar mejor a tu ser querido.</p></div>"
+            },
+            {
+              "icon": "🌅",
+              "title": "Respiro",
+              "subtitle": "Descanso para cuidadores",
+              "bgColor": "#fef3e2",
+              "iconColor": "#d4a373",
+              "modalContent": "<h4 class=\"mb-3\" style=\"color: #d4a373;\">Servicios de Cuidado de Respiro</h4><p style=\"color: #4a5568; margin-bottom: 1rem;\">El cuidado de respiro permite a los familiares tomar descansos necesarios mientras profesionales cuidan del paciente:</p><ul style=\"color: #718096; line-height: 1.8;\"><li><strong>Respiro por horas:</strong> Cuidado profesional durante algunas horas del día</li><li><strong>Respiro nocturno:</strong> Apoyo durante la noche para que puedas descansar</li><li><strong>Respiro semanal:</strong> Cuidado de varios días para descanso prolongado</li><li><strong>Atención domiciliaria:</strong> Profesionales que acuden al hogar</li><li><strong>Unidades de respiro:</strong> Hospitalización temporal del paciente</li></ul><div class=\"alert alert-warning mt-3\" style=\"background: #fef3e2; border-left: 4px solid #d4a373; padding: 1rem;\"><p class=\"mb-0\" style=\"color: #718096;\"><strong>⚡ Beneficios:</strong> Reduce el agotamiento, mejora tu salud y te permite retomar el cuidado con energía renovada.</p></div>"
+            },
+            {
+              "icon": "🕊️",
+              "title": "Duelo",
+              "subtitle": "Acompañamiento en la pérdida",
+              "bgColor": "#f3e8f8",
+              "iconColor": "#b19cd9",
+              "modalContent": "<h4 class=\"mb-3\" style=\"color: #b19cd9;\">Proceso de Duelo y Acompañamiento</h4><p style=\"color: #4a5568; margin-bottom: 1rem;\">El apoyo continúa después de la pérdida de un ser querido. Nuestros servicios incluyen:</p><ul style=\"color: #718096; line-height: 1.8;\"><li><strong>Acompañamiento antes de la pérdida:</strong> Preparación emocional y práctica</li><li><strong>Apoyo inmediato:</strong> Presencia y guía en los primeros momentos</li><li><strong>Terapia de duelo:</strong> Sesiones especializadas para procesar la pérdida</li><li><strong>Grupos de duelo:</strong> Encuentros con personas que atraviesan situaciones similares</li><li><strong>Seguimiento continuo:</strong> Apoyo durante el primer año y más allá</li><li><strong>Recursos espirituales:</strong> Conexión con consejeros espirituales si se desea</li></ul><div class=\"alert alert-primary mt-3\" style=\"background: #f3e8f8; border-left: 4px solid #b19cd9; padding: 1rem;\"><p class=\"mb-0\" style=\"color: #718096;\"><strong>💜 Apoyo:</strong> El duelo es un proceso único para cada persona. Te acompañamos en tu camino.</p></div>"
+            },
+            {
+              "icon": "🤝",
+              "title": "Apoyo Social",
+              "subtitle": "Recursos y orientación",
+              "bgColor": "#ffe8e8",
+              "iconColor": "#d99999",
+              "modalContent": "<h4 class=\"mb-3\" style=\"color: #d99999;\">Servicios de Trabajo Social</h4><p style=\"color: #4a5568; margin-bottom: 1rem;\">Los trabajadores sociales ayudan a las familias con aspectos prácticos y recursos:</p><ul style=\"color: #718096; line-height: 1.8;\"><li><strong>Orientación sobre beneficios:</strong> Ayudas económicas, seguros, pensiones</li><li><strong>Gestión de trámites:</strong> Documentación, certificados, autorizaciones</li><li><strong>Recursos comunitarios:</strong> Conexión con servicios locales y organizaciones</li><li><strong>Planificación financiera:</strong> Manejo de costos y presupuestos de cuidado</li><li><strong>Equipamiento:</strong> Acceso a sillas de ruedas, camas especiales, otros equipos</li><li><strong>Vivienda adaptada:</strong> Modificaciones del hogar para seguridad y comodidad</li></ul><div class=\"alert alert-danger mt-3\" style=\"background: #ffe8e8; border-left: 4px solid #d99999; padding: 1rem; border-color: #d99999 !important;\"><p class=\"mb-0\" style=\"color: #718096;\"><strong>📋 Nota:</strong> Agenda una cita con trabajo social para revisar tu situación particular.</p></div>"
+            },
+            {
+              "icon": "👨‍👩‍👧‍👦",
+              "title": "Apoyo Familiar",
+              "subtitle": "Comunicación y unidad",
+              "bgColor": "#e8f8f8",
+              "iconColor": "#7fc4c4",
+              "modalContent": "<h4 class=\"mb-3\" style=\"color: #7fc4c4;\">Fortalecimiento de Vínculos Familiares</h4><p style=\"color: #4a5568; margin-bottom: 1rem;\">Promovemos la comunicación y unidad familiar durante momentos difíciles:</p><ul style=\"color: #718096; line-height: 1.8;\"><li><strong>Reuniones familiares:</strong> Espacios facilitados para diálogo abierto y honesto</li><li><strong>Mediación familiar:</strong> Resolución de conflictos y toma de decisiones conjuntas</li><li><strong>Inclusión de niños:</strong> Orientación sobre cómo hablar con niños sobre la enfermedad</li><li><strong>Apoyo a cuidadores múltiples:</strong> Coordinación entre varios familiares cuidadores</li><li><strong>Preservación de legado:</strong> Actividades para crear recuerdos y historias familiares</li><li><strong>Rituales y despedidas:</strong> Planificación de momentos significativos</li></ul><div class=\"alert alert-info mt-3\" style=\"background: #e8f8f8; border-left: 4px solid #7fc4c4; padding: 1rem;\"><p class=\"mb-0\" style=\"color: #718096;\"><strong>👪 Juntos:</strong> La familia unida enfrenta mejor los desafíos y encuentra fortaleza mutua.</p></div>"
+            }
+          ]
+        }
+      },
+      {
+        "id": "slide-5",
+        "order": 5,
+        "type": "dragdrop",
+        "title": "Actividad: Principios de Cuidados Paliativos",
+        "audioSrc": "audios/audio_5.mp3",
+        "content": {
+          "question": "Arrastra los 3 principios fundamentales de cuidados paliativos",
+          "objective": "Principios Fundamentales",
+          "requiredCount": 3,
+          "items": [
+            {
+              "id": "item-1",
+              "text": "Alivio del dolor",
+              "correct": true
+            },
+            {
+              "id": "item-2",
+              "text": "Curar la enfermedad",
+              "correct": false
+            },
+            {
+              "id": "item-3",
+              "text": "Mejorar calidad de vida",
+              "correct": true
+            },
+            {
+              "id": "item-4",
+              "text": "Prolongar vida sin límites",
+              "correct": false
+            },
+            {
+              "id": "item-5",
+              "text": "Apoyo integral al paciente",
+              "correct": true
+            }
+          ],
+          "explanation": "Los 3 principios fundamentales son: Alivio del dolor, Mejorar calidad de vida, y Apoyo integral al paciente. Los cuidados paliativos NO buscan curar ni prolongar la vida sin límites.",
+          "feedbackCorrect": "¡Perfecto! Has identificado los 3 principios fundamentales correctamente.",
+          "feedbackIncorrect": "Revisa tu selección. Debes elegir exactamente 3 principios correctos."
+        }
+      },
+      {
+        "id": "slide-6",
+        "order": 6,
+        "type": "page",
+        "title": "Cuidados al Final de la Vida",
+        "audioSrc": "audios/audio_6.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Acompañamiento en la Etapa Final</h2>\n<p class=\"text-md mb-4\" style=\"color: #4a5568;\">Los últimos días y horas de vida requieren cuidados especiales centrados en la comodidad y dignidad del paciente.</p>\n<div class=\"grid-auto-fit-xl mb-4\">\n<div>\n<div class=\"box\" style=\"background: #e8f3f8; height: 100%;\">\n<h4 class=\"mb-2\" style=\"color: var(--slide-title-color);\">Signos de Aproximación de la Muerte:</h4>\n<ul class=\"line-height-relaxed text-sm\" style=\"color: #718096;\">\n<li>Disminución del nivel de conciencia</li>\n<li>Cambios en el patrón respiratorio</li>\n<li>Piel fría y moteada</li>\n<li>Disminución de la ingesta</li>\n<li>Inquietud o agitación terminal</li>\n</ul>\n</div>\n</div>\n<div>\n<div class=\"box\" style=\"background: #fef3e2; height: 100%;\">\n<h4 class=\"mb-2\" style=\"color: var(--color-secondary);\">Cuidados Prioritarios:</h4>\n<ul class=\"line-height-relaxed text-sm\" style=\"color: #718096;\">\n<li>Control de síntomas molestos</li>\n<li>Cuidado de la piel y posicionamiento</li>\n<li>Higiene bucal frecuente</li>\n<li>Presencia y acompañamiento</li>\n<li>Apoyo espiritual si lo desea</li>\n</ul>\n</div>\n</div>\n</div>\n<div class=\"box box-border-left\" style=\"background: #e8f3e8; border-color: #b8d4a7;\">\n<p class=\"margin-0\" style=\"color: #718096; font-style: italic;\">💚 La muerte digna implica respetar los valores, creencias y deseos del paciente hasta el final, asegurando su comodidad y la de su familia.</p>\n</div>\n</div>"
+      },
+      {
+        "id": "slide-7",
+        "order": 7,
+        "type": "page",
+        "title": "Aspectos Éticos en Cuidados Paliativos",
+        "audioSrc": "audios/audio_7.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Dilemas Éticos y Toma de Decisiones</h2>\n<div class=\"mb-4\">\n<img src=\"https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop\" alt=\"Ética médica\" class=\"img-full\">\n</div>\n<p class=\"text-md mb-3\" style=\"color: #4a5568;\">Los cuidados paliativos involucran importantes consideraciones éticas que guían la toma de decisiones centrada en el paciente.</p>\n<div class=\"grid-auto-fit-sm mb-3\">\n<div class=\"team-grid-item\" style=\"background: #e8f3f8;\">\n<h4 class=\"mb-1\" style=\"color: #7fb3c4; font-size: 1rem;\">Autonomía</h4>\n<p class=\"text-sm margin-0\" style=\"color: #718096;\">Derecho a decidir</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #fef3e2;\">\n<h4 class=\"mb-1\" style=\"color: #d4a373; font-size: 1rem;\">Beneficencia</h4>\n<p class=\"text-sm margin-0\" style=\"color: #718096;\">Hacer el bien</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #e8f3e8;\">\n<h4 class=\"mb-1\" style=\"color: #a0c491; font-size: 1rem;\">No Maleficencia</h4>\n<p class=\"text-sm margin-0\" style=\"color: #718096;\">No dañar</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #f3e8f8;\">\n<h4 class=\"mb-1\" style=\"color: #b19cd9; font-size: 1rem;\">Justicia</h4>\n<p class=\"text-sm margin-0\" style=\"color: #718096;\">Equidad</p>\n</div>\n</div>\n<div class=\"box\" style=\"background: #ffe8e8;\">\n<h4 class=\"mb-2\" style=\"color: var(--color-secondary);\">Consideraciones Importantes:</h4>\n<ul class=\"line-height-relaxed\" style=\"color: #718096;\">\n<li>Voluntades anticipadas y testamentos vitales</li>\n<li>Limitación del esfuerzo terapéutico</li>\n<li>Sedación paliativa cuando es apropiada</li>\n<li>Comunicación honesta sobre pronóstico</li>\n</ul>\n</div>\n</div>"
+      },
+      {
+        "id": "slide-8",
+        "order": 8,
+        "type": "quiz",
+        "title": "Evaluación: Práctica Clínica",
+        "audioSrc": "audios/audio_8.mp3",
+        "content": {
+          "question": "¿Cuál es la prioridad principal en los cuidados al final de la vida?",
+          "options": [
+            "Prolongar la vida del paciente el mayor tiempo posible",
+            "Asegurar la comodidad y dignidad del paciente",
+            "Realizar todos los procedimientos médicos disponibles",
+            "Evitar cualquier tipo de medicación"
+          ],
+          "correctAnswer": 1,
+          "explanation": "En los cuidados al final de la vida, la prioridad es asegurar la comodidad y dignidad del paciente, respetando sus valores y deseos, no prolongar la vida a toda costa.",
+          "feedbackCorrect": "¡Correcto! Comprendes que el enfoque principal es el bienestar y la dignidad del paciente.",
+          "feedbackIncorrect": "Recuerda que en cuidados paliativos, especialmente al final de la vida, la prioridad es el confort y la dignidad."
+        }
+      },
+      {
+        "id": "slide-9",
+        "order": 9,
+        "type": "page",
+        "title": "Calidad de Vida en Cuidados Paliativos",
+        "audioSrc": "audios/audio_9.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Maximizando el Bienestar del Paciente</h2>\n<p class=\"text-md mb-3\" style=\"color: #4a5568;\">La calidad de vida es un concepto multidimensional que incluye aspectos físicos, psicológicos, sociales y espirituales del bienestar del paciente.</p>\n<img src=\"https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&h=400&fit=crop\" alt=\"Calidad de vida\" class=\"img-full mb-3\">\n<div class=\"box mb-4\" style=\"background: #e8f3f8;\">\n<h4 class=\"mb-2\" style=\"color: var(--slide-title-color);\">Dimensiones de Calidad de Vida:</h4>\n<ul class=\"line-height-loose text-sm\" style=\"color: #718096;\">\n<li>✨ Bienestar físico y control de síntomas</li>\n<li>💭 Bienestar psicológico y emocional</li>\n<li>👥 Relaciones sociales y familiares</li>\n<li>🙏 Bienestar espiritual y existencial</li>\n<li>🎯 Autonomía y autodeterminación</li>\n</ul>\n</div>\n</div>"
+      },
+      {
+        "id": "slide-10",
+        "order": 10,
+        "type": "page",
+        "title": "Recursos y Apoyo Disponibles",
+        "audioSrc": "audios/audio_10.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-3\" style=\"color: var(--slide-title-color);\">Red de Apoyo y Recursos</h2>\n<p class=\"text-md mb-4\" style=\"color: #4a5568;\">Existen diversos recursos y servicios disponibles para pacientes y familias en cuidados paliativos:</p>\n<div class=\"grid-auto-fit-xl\">\n<div class=\"box\" style=\"background: #e8f3f8;\">\n<h4 class=\"mb-2\" style=\"color: #7fb3c4;\">🏥 Servicios Médicos</h4>\n<ul class=\"line-height-relaxed text-sm\" style=\"color: #718096;\">\n<li>Unidades de cuidados paliativos</li>\n<li>Atención domiciliaria</li>\n<li>Consultas ambulatorias</li>\n<li>Hospitalización cuando necesario</li>\n</ul>\n</div>\n<div class=\"box\" style=\"background: #fef3e2;\">\n<h4 class=\"mb-2\" style=\"color: #d4a373;\">👨‍👩‍👧‍👦 Apoyo Familiar</h4>\n<ul class=\"line-height-relaxed text-sm\" style=\"color: #718096;\">\n<li>Grupos de apoyo</li>\n<li>Consejería familiar</li>\n<li>Educación para cuidadores</li>\n<li>Servicios de respiro</li>\n</ul>\n</div>\n<div class=\"box\" style=\"background: #e8f3e8;\">\n<h4 class=\"mb-2\" style=\"color: #a0c491;\">💰 Recursos Sociales</h4>\n<ul class=\"line-height-relaxed text-sm\" style=\"color: #718096;\">\n<li>Asistencia financiera</li>\n<li>Ayudas técnicas y adaptaciones</li>\n<li>Transporte sanitario</li>\n<li>Trámites administrativos</li>\n</ul>\n</div>\n<div class=\"box\" style=\"background: #f3e8f8;\">\n<h4 class=\"mb-2\" style=\"color: #b19cd9;\">🌟 Apoyo Emocional</h4>\n<ul class=\"line-height-relaxed text-sm\" style=\"color: #718096;\">\n<li>Psicología clínica</li>\n<li>Terapia de duelo</li>\n<li>Acompañamiento espiritual</li>\n<li>Voluntariado</li>\n</ul>\n</div>\n</div>\n</div>"
+      },
+      {        "id": "slide-11",
+        "order": 11,
+        "type": "page",
+        "title": "Video Explicativo del Tema",
+        "audioSrc": "audios/audio_11.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<h2 class=\"mb-4\" style=\"color: var(--slide-title-color);\">Video Educativo</h2>\n<p class=\"text-md mb-4\" style=\"color: #4a5568;\">Te presentamos un video complementario que refuerza los conceptos principales vistos en este curso.</p>\n<div class=\"video-container mb-4\" style=\"position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);\">\n<iframe style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;\" src=\"videos/video_11.mp4\" title=\"Video educativo\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n</div>\n<div class=\"box\" style=\"background: #e8f3f8;\">\n<h4 class=\"mb-2\" style=\"color: var(--slide-title-color);\">📌 Puntos Clave del Video:</h4>\n<ul class=\"line-height-loose\" style=\"color: #718096;\">\n<li><strong>Introducción:</strong> Repaso de conceptos fundamentales</li>\n<li><strong>Casos prácticos:</strong> Ejemplos reales de aplicación</li>\n<li><strong>Mejores prácticas:</strong> Recomendaciones de expertos</li>\n<li><strong>Conclusiones:</strong> Resumen y reflexiones finales</li>\n</ul>\n</div>\n<div class=\"alert alert-info mt-4\" style=\"background: #cfe2ff; border-left: 4px solid #0d6efd; padding: 1rem; border-radius: 8px;\">\n<p class=\"mb-0\" style=\"color: #084298;\"><strong>💡 Nota:</strong> Puedes pausar el video en cualquier momento y volver a revisarlo las veces que necesites.</p>\n</div>\n</div>"
+      },
+      {        "id": "slide-12",
+        "order": 12,
+        "type": "page",
+        "title": "Gracias por tu Dedicación",
+        "audioSrc": "audios/audio_12.mp3",
+        "convertedHtml": "<div class=\"slide-content\">\n<div class=\"text-center mb-4\">\n<div style=\"display: inline-block; background: linear-gradient(135deg, #6ba3ba 0%, #8fb37d 100%); padding: 2rem; border-radius: 50%; margin-bottom: 1.5rem; box-shadow: 0 8px 24px rgba(107, 163, 186, 0.3);\">\n<span style=\"font-size: 4rem;\">🎓</span>\n</div>\n<h2 class=\"mb-2\" style=\"color: var(--slide-title-color); font-size: 2rem;\">¡Felicitaciones!</h2>\n<p style=\"font-size: 1.2rem; color: var(--text-secondary); font-weight: 500;\">Has completado exitosamente el curso</p>\n</div>\n<div class=\"box-border-left mb-4\" style=\"background: linear-gradient(135deg, #e8f3f8 0%, #f0f8fa 100%); padding: 2rem; border-radius: 12px; border-color: var(--color-primary); border-left-width: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);\">\n<p class=\"text-center mb-3\" style=\"font-size: 1.1rem; line-height: 1.8; color: #4a5568;\">Los conocimientos adquiridos te permitirán brindar una atención más <strong>compasiva</strong> y de <strong>mayor calidad</strong> a los pacientes y sus familias.</p>\n<div class=\"text-center\" style=\"padding: 1.5rem; background: white; border-radius: 8px; margin-top: 1.5rem;\">\n<p class=\"margin-0\" style=\"font-size: 1.05rem; color: #718096; font-style: italic; line-height: 1.8;\">💚 El verdadero arte de los cuidados paliativos no está solo en el tratamiento médico, sino en acompañar con <strong style=\"color: var(--slide-title-color);\">dignidad</strong>, <strong style=\"color: var(--slide-title-color);\">compasión</strong> y <strong style=\"color: var(--slide-title-color);\">respeto</strong> en cada momento del viaje.</p>\n</div>\n</div>\n<div class=\"grid-auto-fit-md mt-4\">\n<div class=\"team-grid-item\" style=\"background: #e8f3f8;\">\n<div class=\"mb-1\" style=\"font-size: 2rem;\">✅</div>\n<p class=\"text-sm margin-0\" style=\"color: #718096; font-weight: 600;\">Contenido Completado</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #fef3e2;\">\n<div class=\"mb-1\" style=\"font-size: 2rem;\">🌟</div>\n<p class=\"text-sm margin-0\" style=\"color: #718096; font-weight: 600;\">Nuevas Habilidades</p>\n</div>\n<div class=\"team-grid-item\" style=\"background: #e8f3e8;\">\n<div class=\"mb-1\" style=\"font-size: 2rem;\">💪</div>\n<p class=\"text-sm margin-0\" style=\"color: #718096; font-weight: 600;\">Listo para Aplicar</p>\n</div>\n</div>\n<div class=\"text-center\" style=\"margin-top: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 8px;\">\n<p class=\"margin-0\" style=\"color: var(--text-muted); font-size: 1rem;\">✨ Gracias por tu dedicación y compromiso con la excelencia en el cuidado ✨</p>\n</div>\n</div>"
+      }
+    ]
+  }
+}

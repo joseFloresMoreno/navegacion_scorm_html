@@ -450,6 +450,36 @@ button {
     cursor: not-allowed;
 }
 
+/* Quiz responsive - mobile styles */
+@media (max-width: 768px) {
+    .quiz-option-wrapper {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .quiz-option-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .quiz-badge {
+        margin-bottom: 1rem !important;
+        margin-right: 0 !important;
+    }
+    
+    .quiz-text {
+        padding-left: 0 !important;
+        width: 100% !important;
+        text-align: center !important;
+        flex-grow: 0 !important;
+    }
+    
+    .quiz-check-icon {
+        margin-top: 0.5rem !important;
+        margin-left: 0 !important;
+    }
+}
+
 .quiz-check-icon {
     font-size: 1.5rem;
     transition: all 0.3s ease;

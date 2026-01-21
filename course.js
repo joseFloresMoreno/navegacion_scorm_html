@@ -932,10 +932,10 @@
         slideHtml += '<div class="quiz-options-container">';
         options.forEach(function(option, index) {
           slideHtml += '<div class="quiz-option-wrapper mb-3 p-3 rounded-3" onclick="document.getElementById(\'' + quizId + '-' + index + '\').click();">';
-          slideHtml += '<div class="d-flex align-items-center">';
+          slideHtml += '<div class="d-flex align-items-center quiz-option-content">';
           slideHtml += '<input class="quiz-radio-hidden" type="radio" name="' + quizId + '" id="' + quizId + '-' + index + '" value="' + index + '" data-correct="' + (index === correctAnswer ? 'true' : 'false') + '" onchange="CourseApp.handleQuizAnswer(this, \'' + slide.id + '\')">';
-          slideHtml += '<span class="badge bg-primary me-3 px-3 py-2">' + letters[index] + '</span>';
-          slideHtml += '<span class="fs-6 fw-medium flex-grow-1">' + escapeHtml(option) + '</span>';
+          slideHtml += '<span class="badge bg-primary me-3 px-3 py-2 quiz-badge">' + letters[index] + '</span>';
+          slideHtml += '<span class="fs-6 fw-medium flex-grow-1 quiz-text">' + escapeHtml(option) + '</span>';
           slideHtml += '<i class="bi bi-circle quiz-check-icon ms-2"></i>';
           slideHtml += '</div>';
           slideHtml += '</div>';
