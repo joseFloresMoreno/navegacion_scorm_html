@@ -162,20 +162,20 @@ SCORM 1.2 API Shim for standalone testing - ONLY loads if no real LMS API is pre
     
     loadFromStorage: function() {
       try {
-        const savedData = localStorage.getItem('scorm12_test_data');
+        const savedData = sessionStorage.getItem('scorm12_test_data');
         if (savedData) {
           this.data = JSON.parse(savedData);
         }
       } catch (error) {
-        console.warn('[SCORM 1.2 Shim] Could not load SCORM data from localStorage:', error);
+        console.warn('[SCORM 1.2 Shim] Could not load SCORM data from sessionStorage:', error);
       }
     },
     
     saveToStorage: function() {
       try {
-        localStorage.setItem('scorm12_test_data', JSON.stringify(this.data));
+        sessionStorage.setItem('scorm12_test_data', JSON.stringify(this.data));
       } catch (error) {
-        console.warn('[SCORM 1.2 Shim] Could not save SCORM data to localStorage:', error);
+        console.warn('[SCORM 1.2 Shim] Could not save SCORM data to sessionStorage:', error);
       }
     }
   };
