@@ -91,23 +91,54 @@ body {
 .course-header {
     background: var(--bg-body);
     color: var(--header-title-color);
-    padding: 25px 30px;
+    padding: 25px 70px 25px 30px; /* Más padding derecho para el botón FS */
     text-align: center;
     flex-shrink: 0;
     position: relative;
+}
+
+/* Sin logo: centrado */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Con logo: alineado a la izquierda */
+.header-content.has-logo {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.header-content.has-logo h1 {
+    text-align: left;
+}
+
+.course-logo-container {
+    flex-shrink: 0;
+}
+
+.course-logo {
+    max-height: 60px;
+    width: auto;
+    object-fit: contain;
 }
 
 .course-header h1 {
     font-size: 32px;
     margin-bottom: 5px;
     font-weight: 700;
+    margin: 0;
 }
 
 /* Botón de fullscreen */
 .fullscreen-btn {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--color-primary);
     border-radius: 8px;
@@ -932,8 +963,36 @@ button {
    RESPONSIVE
    ==================================== */
 @media (max-width: 768px) {
+    .course-header {
+        padding: 20px 60px 20px 20px; /* Reducir padding en móvil */
+    }
+    
     .course-header h1 {
-        font-size: 24px;
+        font-size: 20px;
+        line-height: 1.3;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .header-content.has-logo {
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+    }
+    
+    .course-logo {
+        max-height: 40px; /* Logo más pequeño en móvil */
+    }
+    
+    .fullscreen-btn {
+        right: 15px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
     }
 
     .course-progress {

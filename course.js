@@ -539,9 +539,14 @@
     // Update course logo if provided
     const logoContainer = document.getElementById('course-logo-container');
     const logoElement = document.getElementById('course-logo');
+    const headerContent = document.querySelector('.header-content');
     if (logoContainer && logoElement && data.logo) {
       logoElement.src = data.logo;
       logoContainer.style.display = 'block';
+      // Agregar clase para cambiar la alineación cuando hay logo
+      if (headerContent) {
+        headerContent.classList.add('has-logo');
+      }
     }
     
     // SCORM 1.2 tracking - set initial status
