@@ -1505,6 +1505,19 @@
     // Handle page unload
     window.addEventListener('beforeunload', terminate);
     window.addEventListener('unload', terminate);
+    
+    // Sticky navigation scroll effect - en el window/página
+    const slideNav = document.getElementById('slide-navigation');
+    
+    if (slideNav) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          slideNav.classList.add('scrolled');
+        } else {
+          slideNav.classList.remove('scrolled');
+        }
+      });
+    }
   });
   
   // Public API

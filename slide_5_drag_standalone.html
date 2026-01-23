@@ -1,0 +1,308 @@
+<!-- Header -->
+<div style="margin-bottom: 2.5rem; text-align: center;">
+    <h2 style="color: #141B59; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Actividad: Principios de Cuidados Paliativos</h2>
+    <p style="color: #436AB1; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem;">Arrastra los 3 principios fundamentales de cuidados paliativos</p>
+</div>
+
+<!-- Zona de Drop -->
+<div style="background: linear-gradient(135deg, #436AB1 0%, #141B59 100%); border-radius: 20px; padding: 3rem; margin-bottom: 3rem; box-shadow: 0 10px 40px rgba(67, 106, 177, 0.3); min-height: 200px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+        <div style="font-size: 2.5rem;">🎯</div>
+        <h3 style="color: white; font-size: 2rem; font-weight: 700; margin: 0;">Principios Fundamentales</h3>
+    </div>
+    <div id="dropZone" style="background: rgba(255, 255, 255, 0.15); border: 3px dashed rgba(255, 255, 255, 0.4); border-radius: 16px; padding: 2rem; min-height: 150px; transition: all 0.3s ease;">
+        <p id="dropPlaceholder" style="color: rgba(255, 255, 255, 0.8); text-align: center; font-size: 1.2rem; margin: 2rem 0;">Arrastra aquí los 3 principios correctos</p>
+        <div id="droppedItems" style="display: grid; gap: 1rem;"></div>
+    </div>
+    <p style="color: rgba(255, 255, 255, 0.9); text-align: center; margin-top: 1.5rem; font-size: 1.1rem; font-weight: 600;">
+        <span id="counter">0</span> / 3 principios seleccionados
+    </p>
+</div>
+
+<!-- Items disponibles -->
+<div style="background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); margin-bottom: 2rem;">
+    <h4 style="color: #141B59; font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; text-align: center;">Selecciona las opciones correctas:</h4>
+    <div id="itemsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <!-- Los items se generarán por JavaScript -->
+    </div>
+</div>
+
+<!-- Botones de acción -->
+<div style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
+    <button id="checkBtn" style="background: linear-gradient(135deg, #49BEA6 0%, #3ea18c 100%); color: white; border: none; padding: 1.2rem 3rem; border-radius: 12px; font-size: 1.2rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(73, 190, 166, 0.3); transition: all 0.3s ease; opacity: 0.5; pointer-events: none;">
+        Verificar Respuesta
+    </button>
+    <button id="resetBtn" style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%); color: white; border: none; padding: 1.2rem 3rem; border-radius: 12px; font-size: 1.2rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3); transition: all 0.3s ease;">
+        Reiniciar
+    </button>
+</div>
+
+<!-- Feedback -->
+<div id="feedback" style="display: none; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+    <div style="display: flex; align-items: start; gap: 1.5rem;">
+        <div id="feedbackIcon" style="font-size: 3rem; flex-shrink: 0;"></div>
+        <div>
+            <h4 id="feedbackTitle" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;"></h4>
+            <p id="feedbackMessage" style="font-size: 1.1rem; line-height: 1.6; margin: 0;"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Explicación -->
+<div id="explanation" style="display: none; background: linear-gradient(135deg, #e6ecf7 0%, #dbe6f6 100%); border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+    <div style="display: flex; align-items: start; gap: 1.5rem;">
+        <div style="font-size: 2.5rem; flex-shrink: 0;">💡</div>
+        <div>
+            <h4 style="color: #141B59; font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Explicación</h4>
+            <p style="color: #6c757d; font-size: 1.1rem; line-height: 1.7; margin: 0;">Los 3 principios fundamentales son: <strong style="color: #436AB1;">Alivio del dolor</strong>, <strong style="color: #436AB1;">Mejorar calidad de vida</strong>, y <strong style="color: #436AB1;">Apoyo integral al paciente</strong>. Los cuidados paliativos NO buscan curar ni prolongar la vida sin límites.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    var items = [
+        { id: "item-1", text: "Alivio del dolor", correct: true },
+        { id: "item-2", text: "Curar la enfermedad", correct: false },
+        { id: "item-3", text: "Mejorar calidad de vida", correct: true },
+        { id: "item-4", text: "Prolongar vida sin límites", correct: false },
+        { id: "item-5", text: "Apoyo integral al paciente", correct: true }
+    ];
+
+    var droppedItems = [];
+    var draggedElement = null;
+
+    function init() {
+        renderItems();
+        setupEventListeners();
+    }
+
+    function renderItems() {
+        var container = document.getElementById('itemsContainer');
+        container.innerHTML = '';
+        
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            if (!isItemDropped(item.id)) {
+                var itemDiv = createItemElement(item);
+                container.appendChild(itemDiv);
+            }
+        }
+    }
+
+    function createItemElement(item) {
+        var div = document.createElement('div');
+        div.id = item.id;
+        div.draggable = true;
+        div.style.cssText = 'background: white; border: 2px solid #e0e0e0; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: move; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);';
+        div.innerHTML = '<p style="color: #141B59; font-size: 1.1rem; font-weight: 600; margin: 0;">' + item.text + '</p>';
+        
+        div.ondragstart = function(e) {
+            draggedElement = this;
+            this.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+        };
+        
+        div.ondragend = function() {
+            this.style.opacity = '1';
+        };
+        
+        div.onmouseover = function() {
+            this.style.transform = 'translateY(-4px)';
+            this.style.boxShadow = '0 6px 20px rgba(67, 106, 177, 0.2)';
+            this.style.borderColor = '#436AB1';
+        };
+        
+        div.onmouseout = function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+            this.style.borderColor = '#e0e0e0';
+        };
+        
+        return div;
+    }
+
+    function createDroppedItemElement(item) {
+        var div = document.createElement('div');
+        div.id = item.id + '-dropped';
+        div.style.cssText = 'background: white; border: 2px solid #49BEA6; border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 8px rgba(73, 190, 166, 0.2);';
+        
+        var text = document.createElement('p');
+        text.style.cssText = 'color: #141B59; font-size: 1.05rem; font-weight: 600; margin: 0;';
+        text.textContent = item.text;
+        
+        var removeBtn = document.createElement('button');
+        removeBtn.style.cssText = 'background: #F171AB; color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;';
+        removeBtn.innerHTML = '×';
+        removeBtn.onclick = function() {
+            removeDroppedItem(item.id);
+        };
+        
+        removeBtn.onmouseover = function() {
+            this.style.background = '#d14a86';
+            this.style.transform = 'scale(1.1)';
+        };
+        
+        removeBtn.onmouseout = function() {
+            this.style.background = '#F171AB';
+            this.style.transform = 'scale(1)';
+        };
+        
+        div.appendChild(text);
+        div.appendChild(removeBtn);
+        
+        return div;
+    }
+
+    function setupEventListeners() {
+        var dropZone = document.getElementById('dropZone');
+        
+        dropZone.ondragover = function(e) {
+            e.preventDefault();
+            this.style.background = 'rgba(255, 255, 255, 0.25)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+        };
+        
+        dropZone.ondragleave = function() {
+            this.style.background = 'rgba(255, 255, 255, 0.15)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+        };
+        
+        dropZone.ondrop = function(e) {
+            e.preventDefault();
+            this.style.background = 'rgba(255, 255, 255, 0.15)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            
+            if (draggedElement && droppedItems.length < 3) {
+                var itemId = draggedElement.id;
+                var item = findItemById(itemId);
+                if (item) {
+                    droppedItems.push(item);
+                    updateUI();
+                }
+            }
+        };
+        
+        document.getElementById('checkBtn').onclick = checkAnswer;
+        document.getElementById('resetBtn').onclick = reset;
+    }
+
+    function findItemById(id) {
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].id === id) {
+                return items[i];
+            }
+        }
+        return null;
+    }
+
+    function isItemDropped(id) {
+        for (var i = 0; i < droppedItems.length; i++) {
+            if (droppedItems[i].id === id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function removeDroppedItem(id) {
+        for (var i = 0; i < droppedItems.length; i++) {
+            if (droppedItems[i].id === id) {
+                droppedItems.splice(i, 1);
+                break;
+            }
+        }
+        updateUI();
+    }
+
+    function updateUI() {
+        var droppedContainer = document.getElementById('droppedItems');
+        var placeholder = document.getElementById('dropPlaceholder');
+        var counter = document.getElementById('counter');
+        var checkBtn = document.getElementById('checkBtn');
+        
+        droppedContainer.innerHTML = '';
+        
+        if (droppedItems.length > 0) {
+            placeholder.style.display = 'none';
+            for (var i = 0; i < droppedItems.length; i++) {
+                var itemEl = createDroppedItemElement(droppedItems[i]);
+                droppedContainer.appendChild(itemEl);
+            }
+        } else {
+            placeholder.style.display = 'block';
+        }
+        
+        counter.textContent = droppedItems.length;
+        
+        if (droppedItems.length === 3) {
+            checkBtn.style.opacity = '1';
+            checkBtn.style.pointerEvents = 'auto';
+        } else {
+            checkBtn.style.opacity = '0.5';
+            checkBtn.style.pointerEvents = 'none';
+        }
+        
+        renderItems();
+        hideFeedback();
+    }
+
+    function checkAnswer() {
+        var correctCount = 0;
+        for (var i = 0; i < droppedItems.length; i++) {
+            if (droppedItems[i].correct) {
+                correctCount++;
+            }
+        }
+        
+        var isCorrect = correctCount === 3 && droppedItems.length === 3;
+        showFeedback(isCorrect);
+    }
+
+    function showFeedback(isCorrect) {
+        var feedback = document.getElementById('feedback');
+        var icon = document.getElementById('feedbackIcon');
+        var title = document.getElementById('feedbackTitle');
+        var message = document.getElementById('feedbackMessage');
+        var explanation = document.getElementById('explanation');
+        
+        feedback.style.display = 'block';
+        
+        if (isCorrect) {
+            feedback.style.background = 'linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%)';
+            feedback.style.border = '2px solid #49BEA6';
+            icon.textContent = '✅';
+            title.style.color = '#155724';
+            title.textContent = '¡Correcto!';
+            message.style.color = '#155724';
+            message.textContent = '¡Perfecto! Has identificado los 3 principios fundamentales correctamente.';
+            explanation.style.display = 'block';
+        } else {
+            feedback.style.background = 'linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%)';
+            feedback.style.border = '2px solid #F171AB';
+            icon.textContent = '❌';
+            title.style.color = '#721c24';
+            title.textContent = 'Incorrecto';
+            message.style.color = '#721c24';
+            message.textContent = 'Revisa tu selección. Debes elegir exactamente 3 principios correctos.';
+            explanation.style.display = 'none';
+        }
+    }
+
+    function hideFeedback() {
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('explanation').style.display = 'none';
+    }
+
+    function reset() {
+        droppedItems = [];
+        updateUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>

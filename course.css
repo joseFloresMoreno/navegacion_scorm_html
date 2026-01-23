@@ -1,5 +1,36 @@
 /* ====================================
    COURSE.CSS - Estilos Completos del Curso
+   
+   ÍNDICE DE CONTENIDOS:
+   1. Variables de Tema
+   2. Reset y Estilos Base
+   3. Estructura del Curso
+      - Course Container
+      - Header
+      - Logo y Título
+      - Botón Fullscreen
+      - Progress Dots
+   4. Navegación (Sticky)
+      - Estilos base
+      - Botones
+      - Contador
+   5. Quiz
+   6. Info Cards
+   7. Modales
+   8. Animaciones
+   9. Tipografía
+   10. Imágenes
+   11. Videos y Audios
+   12. Tablas
+   13. Hero Section
+   14. Features
+   15. Drag and Drop
+   16. Timeline
+   17. Tabs
+   18. Acordeones
+   19. Carruseles
+   20. Responsive
+   21. Utilidades
    ==================================== */
 
 /* Importar fuentes */
@@ -82,7 +113,7 @@ body {
     background: white;
     border-radius: 12px;
     box-shadow: 0 20px 60px var(--shadow-color);
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -248,19 +279,32 @@ body {
 }
 
 /* ====================================
-   NAVEGACIÓN
+   NAVEGACIÓN - Sticky Navigation (arriba)
    ==================================== */
 .slide-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    padding: 20px 40px;
-    border-top: 1px solid var(--border-color);
-    background: #f9f9f9;
+    padding: 15px 40px;
+    border-bottom: 2px solid var(--border-color);
+    background: white;
     flex-shrink: 0;
     flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
 }
+
+/* Efecto shadow cuando se hace scroll */
+.slide-nav.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+}
+
+/* Estilos de botones de navegación */
 
 button {
     padding: 12px 30px !important;
@@ -1799,7 +1843,10 @@ button {
     .slide-nav {
         flex-wrap: nowrap !important;
         gap: 8px !important;
-        padding: 12px 15px !important;
+        padding: 10px 15px !important;
+        position: sticky;
+        top: 0;
+        z-index: 900;
     }
 
     .slide-counter {
