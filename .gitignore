@@ -4,10 +4,18 @@ slide-builder/package-lock.json
 
 # Dependencies
 node_modules/
-package-lock.json
+slide-builder/package-lock.json
+slide-builder/package.json
+slide-builder/server.js
+slide-builder/.gitignore
+slide-builder/app.js
+slide-builder/index.js
+slide-builder/style.css
+slide-builder/public/
 
 # Environment variables
 .env
+.env.example
 .env.local
 .env.development.local
 .env.test.local
@@ -35,7 +43,8 @@ desktop.ini
 dist/
 build/
 *.zip
-navegacion_scorm_html.zip
+slide-builder/navegacion_scorm_html.zip
+slide-builder/README.md
 
 # Temporary files
 tmp/
@@ -44,6 +53,7 @@ temp/
 
 # Render deployment
 .render
+slide-builder/render.yaml
 
 # Backup files
 *.bak
